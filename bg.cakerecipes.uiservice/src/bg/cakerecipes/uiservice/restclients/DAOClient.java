@@ -9,33 +9,22 @@ import javax.ws.rs.core.MultivaluedMap;
 
 import bg.cakerecipes.daoservices.model.Cake;
 
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.representation.Form;
 import com.sun.jersey.api.uri.UriBuilderImpl;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
-public class DAOClient implements IDAOClient {
+public class DAOClient extends AbstractClient {
+	
+	private final String REST_PATH = "cakes";
 
-	private final WebResource service;
-
-	public DAOClient() {
-		final ClientConfig config = new DefaultClientConfig();
-		final Client client = Client.create(config);
-		service = client.resource(getServiceURI());
-	}
-
-	@Override
 	public boolean writeCake(Cake cake) {
 		final Form form = new Form();
 		form.add("name", cake.getName());
 		form.add("ingredients", cake.getIngredients());
 		form.add("recipe", cake.getRecipe());
 
-		final ClientResponse response = service.path("rest").path("cakes")
+		final ClientResponse response = getWebService(REST_PATH)
 				.type(MediaType.APPLICATION_FORM_URLENCODED)
 				.post(ClientResponse.class, form);
 		if (response.getStatus() != 204) {
@@ -45,14 +34,12 @@ public class DAOClient implements IDAOClient {
 		return true;
 	}
 
-	@Override
 	public List<Cake> readCakes() {
 		final List<Cake> cakes = Arrays.asList(unparseJsonResponse());
 		return cakes;
 	}
 
 
-	@Override
 	public List<Cake> readCakes(String... ids) {
 		final MultivaluedMap<String, String> queryParameters = getIdsAsQueryParameters(ids);
 		return Arrays.asList(unparseJsonResponse(queryParameters));
@@ -73,14 +60,11 @@ public class DAOClient implements IDAOClient {
 	}
 
 	private Cake[] unparseJsonResponse() {
-		return service.path("rest").path("cakes")
-				.accept(MediaType.APPLICATION_XML).get(Cake[].class);
+		return getBuilder(REST_PATH).get(Cake[].class);
 	}
 	
 	private Cake[] unparseJsonResponse(MultivaluedMap<String, String> queryParameters) {
-		return service.path("rest").path("cakes")
-				.queryParams(queryParameters)
-				.accept(MediaType.APPLICATION_XML).get(Cake[].class);
+		return getBuilder(queryParameters, REST_PATH).get(Cake[].class);
 	}
 
 }
