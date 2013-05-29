@@ -18,11 +18,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
+import bg.cakerecipes.daoservices.db.model.DBCake;
+import bg.cakerecipes.daoservices.db.model.DBCakeDAO;
 import bg.cakerecipes.daoservices.db.model.DBCakeDAOException;
 import bg.cakerecipes.daoservices.db.model.IDBCake;
 import bg.cakerecipes.daoservices.db.model.IDBCakeDAO;
-import bg.cakerecipes.daoservices.db.model.impl.DBCake;
-import bg.cakerecipes.daoservices.db.model.impl.DBCakeDAO;
 import bg.cakerecipes.daoservices.model.Cake;
 
 @Path("/cakes")

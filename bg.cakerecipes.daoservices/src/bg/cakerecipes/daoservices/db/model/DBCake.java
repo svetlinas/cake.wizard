@@ -1,4 +1,4 @@
-package bg.cakerecipes.daoservices.db.model.impl;
+package bg.cakerecipes.daoservices.db.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import bg.cakerecipes.daoservices.db.model.IDBCake;
 
 @Entity
 @Table(name="CAKES")

@@ -1,4 +1,4 @@
-package bg.cakerecipes.daoservices.db.model.impl;
+package bg.cakerecipes.daoservices.db.model;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +14,6 @@ import javax.sql.DataSource;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
-import bg.cakerecipes.daoservices.db.model.DBCakeDAOException;
-import bg.cakerecipes.daoservices.db.model.IDBCake;
-import bg.cakerecipes.daoservices.db.model.IDBCakeDAO;
 
 public class DBCakeDAO implements IDBCakeDAO {
 
