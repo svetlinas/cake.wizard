@@ -8,6 +8,6 @@ public interface IDBCakeDAO {
 	
 	public List<IDBCake> getAllCakes();
 	
-	public void addCake(IDBCake cakeToBeAdded);
+	public void addCake(IDBCake cakeToBeAdded) throws DBCakeDAOException;
 
 }

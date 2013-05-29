@@ -1,4 +1,4 @@
-package bg.cakerecipes.daoservices.db.model;
+package bg.cakerecipes.daoservices.db.model.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +13,10 @@ import javax.persistence.Query;
 import javax.sql.DataSource;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
+
+import bg.cakerecipes.daoservices.db.model.DBCakeDAOException;
+import bg.cakerecipes.daoservices.db.model.IDBCake;
+import bg.cakerecipes.daoservices.db.model.IDBCakeDAO;
 
 public class DBCakeDAO implements IDBCakeDAO {
 
@@ -45,7 +49,7 @@ public class DBCakeDAO implements IDBCakeDAO {
 	public List<IDBCake> getAllCakes() {
 		EntityManager manager = factory.createEntityManager();
 		try {
-			Query query = manager.createNamedQuery("listAllCakes");
+			Query query = manager.createNamedQuery("getAllCakes");
 			List<IDBCake> cakes = query.getResultList();
 
 			return cakes;
@@ -55,11 +59,15 @@ public class DBCakeDAO implements IDBCakeDAO {
 	}
 
 	@Override
-	public void addCake(IDBCake cakeToBeAdded) {
+	public void addCake(IDBCake cakeToBeAdded) throws DBCakeDAOException {
 		EntityManager manager = factory.createEntityManager();
 		try {
+			manager.getTransaction().begin();
 			manager.persist(cakeToBeAdded);
 			manager.getTransaction().commit();
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+			throw new DBCakeDAOException("", e);
 		} finally {
 			manager.close();
 		}

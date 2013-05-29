@@ -5,5 +5,5 @@ import bg.cakerecipes.daoservices.model.Cake;
 
 public interface ICakeBuilder {
 
-	public Cake createCake(IDBCake cake);
+	public Cake buildCake(IDBCake cake);
 }

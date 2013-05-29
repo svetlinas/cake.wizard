@@ -1,4 +1,4 @@
-package bg.cakerecipes.daoservices.db.model;
+package bg.cakerecipes.daoservices.db.model.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +9,16 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import bg.cakerecipes.daoservices.db.model.IDBCake;
+
 @Entity
 @Table(name="CAKES")
 @NamedQueries({
 	@NamedQuery(name="getCakeById", query="SELECT c FROM DBCake c WHERE c.id = :id"),
-	@NamedQuery(name="listAllCakes", query="SELECT e FROM DBCake e")})
+	@NamedQuery(name="getAllCakes", query="SELECT e FROM DBCake e")})
 public class DBCake implements IDBCake{
+	
+	//TODO image, categories
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +28,7 @@ public class DBCake implements IDBCake{
 	private String name;
 	
 	@Column
-	private String products;
+	private String ingredients;
 	
 	@Column
 	private String recipe;
@@ -52,21 +56,22 @@ public class DBCake implements IDBCake{
 	}
 
 	@Override
-	public String getProducts() {
-		return products;
+	public String getIngredients() {
+		return ingredients;
 	}
-
-	public void setProducts(String products) {
-		this.products = products;
+	
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	@Override
 	public String getRecipe() {
 		return recipe;
 	}
-
+	
 	public void setRecipe(String recipe) {
 		this.recipe = recipe;
 	}
 	
 }
+

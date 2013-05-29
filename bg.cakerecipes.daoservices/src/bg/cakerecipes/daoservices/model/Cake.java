@@ -1,7 +1,5 @@
 package bg.cakerecipes.daoservices.model;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -17,8 +15,8 @@ public class Cake {
 	@XmlElement(name="name")
 	private String name;
 	
-	@XmlElement(name="products")
-	private List<String> products;
+	@XmlElement(name="ingredients")
+	private String ingredients;
 	
 	@XmlElement(name="recipe")
 	private String recipe;
@@ -43,12 +41,12 @@ public class Cake {
 		this.name = name;
 	}
 
-	public List<String> getProducts() {
-		return products;
+	public String getIngredients() {
+		return ingredients;
 	}
 
-	public void setProducts(List<String> products) {
-		this.products = products;
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	public String getRecipe() {
