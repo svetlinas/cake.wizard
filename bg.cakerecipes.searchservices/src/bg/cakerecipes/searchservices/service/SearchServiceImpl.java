@@ -18,11 +18,13 @@ public class SearchServiceImpl implements SearchService {
 	public List<Entry> query(String keyword) {
 		List<Entry> list = new ArrayList<Entry>();
 
-		Entry e = new Entry();
-		e.setId("object-id-1");
-		e.setRank(new Long(10));
-
-		list.add(e);
+		for(int i=0; i<3; i++){
+			Entry e = new Entry();
+			e.setId("cake-id-" + i);
+			e.setRank(new Long(10 + i));
+	
+			list.add(e);
+		}
 
 		return list;
 	}

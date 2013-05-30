@@ -44,4 +44,6 @@ public interface SearchService {
 	@ResponseWrapper(className = "bg.cakerecipes.searchservices.service.jaxws.BuildIndexTreeResponse", localName = "buildIndexTreeResponse", targetNamespace = "http://service.searchservices.cakerecipes.bg/")
 	@WebResult(name = "return")
 	public void buildIndexTree(@WebParam(name = "arg0") List<Object> objects);
+	
+	//TODO make this list of Cakes which contain or without parameters (gets them from DB itself
 }

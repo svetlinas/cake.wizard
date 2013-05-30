@@ -30,10 +30,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "query", propOrder = {
     "arg0"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
 public class Query {
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected String arg0;
 
     /**
@@ -44,7 +44,7 @@ public class Query {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public String getArg0() {
         return arg0;
     }
@@ -57,7 +57,7 @@ public class Query {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public void setArg0(String value) {
         this.arg0 = value;
     }

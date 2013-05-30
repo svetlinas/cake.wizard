@@ -32,10 +32,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "buildIndexTree", propOrder = {
     "arg0"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
 public class BuildIndexTree {
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected List<Object> arg0;
 
     /**
@@ -60,7 +60,7 @@ public class BuildIndexTree {
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public List<Object> getArg0() {
         if (arg0 == null) {
             arg0 = new ArrayList<Object>();

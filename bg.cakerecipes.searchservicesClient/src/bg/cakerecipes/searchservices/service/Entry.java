@@ -32,12 +32,12 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "rank"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
 public class Entry {
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected String id;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected Long rank;
 
     /**
@@ -48,7 +48,7 @@ public class Entry {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public String getId() {
         return id;
     }
@@ -61,7 +61,7 @@ public class Entry {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public void setId(String value) {
         this.id = value;
     }
@@ -74,7 +74,7 @@ public class Entry {
      *     {@link Long }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public Long getRank() {
         return rank;
     }
@@ -87,7 +87,7 @@ public class Entry {
      *     {@link Long }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comments = "JAXB RI v2.2.6")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public void setRank(Long value) {
         this.rank = value;
     }

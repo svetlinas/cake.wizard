@@ -13,7 +13,7 @@
     <description></description>
     <display-name>TestServlet</display-name>
     <servlet-name>TestServlet</servlet-name>
-    <servlet-class>bg.cakerecipes.searchservices.servlet.TestServlet</servlet-class>
+    <servlet-class>bg.cakerecipes.ui.servlet.TestServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TestServlet</servlet-name>
