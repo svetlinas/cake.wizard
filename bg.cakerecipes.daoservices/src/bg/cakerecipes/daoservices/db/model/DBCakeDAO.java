@@ -1,5 +1,6 @@
 package bg.cakerecipes.daoservices.db.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,15 +19,19 @@ public class DBCakeDAO implements IDBCakeDAO {
 		factory = createEntityManagerFactory();
 	}
 
+	
 	@Override
-	public IDBCake getCake(Long id) {
+	public List<IDBCake> getCakes(List<Long> ids) {
 		EntityManager manager = factory.createEntityManager();
 		try {
-			Query query = manager.createNamedQuery("getCakeById");
-			query.setParameter("id", id);
+			Query query = manager.createNamedQuery("getCakesById");
+			query.setParameter("ids", ids);
 
-			DBCake cake = (DBCake) query.getSingleResult();
-			return cake;
+			List<IDBCake> resultCakes = new ArrayList<IDBCake>(ids.size());
+			for(Object cake : query.getResultList()){
+				resultCakes.add((DBCake) cake);
+			}
+			return resultCakes;
 		} finally {
 			manager.close();
 		}

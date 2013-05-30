@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface IDBCakeDAO {
 	
-	public IDBCake getCake(Long id);
+	public List<IDBCake> getCakes(List<Long> ids);
 	
 	public List<IDBCake> getAllCakes();
 	

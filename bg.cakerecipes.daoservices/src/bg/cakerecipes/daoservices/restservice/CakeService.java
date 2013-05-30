@@ -23,48 +23,35 @@ import bg.cakerecipes.daoservices.db.model.DBCakeDAO;
 import bg.cakerecipes.daoservices.db.model.DBCakeDAOException;
 import bg.cakerecipes.daoservices.db.model.IDBCake;
 import bg.cakerecipes.daoservices.db.model.IDBCakeDAO;
-import bg.cakerecipes.daoservices.model.Cake;
+import bg.cakerecipes.daoservices.rest.CakeConverter;
+import bg.cakerecipes.daoservices.rest.ICakeConverter;
+import bg.cakerecipes.daoservices.rest.model.Cake;
 
 @Path("/cakes")
-public class CakeService implements ICakeBuilder {
+public class CakeService{
 
 	private static final Logger logger = Logger.getLogger(CakeService.class);
 	private final IDBCakeDAO dao;
+	private final ICakeConverter cakeConverter;
 
 	public CakeService() {
 		try {
-			this.dao = new DBCakeDAO();
+			this.dao = new DBCakeDAO(); // TODO make with factory
+			this.cakeConverter = new CakeConverter(); //TODO make this with static methods like util class ?
 		} catch (DBCakeDAOException ex) {
 			logger.error("Failed to create Cake", ex);
-			throw new WebApplicationException(
-					HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			throw new WebApplicationException(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		}
 	}
 
-	public CakeService(IDBCakeDAO dao) {
-		this.dao = dao;
-	}
-
-	@Override
-	public Cake buildCake(IDBCake dbCake) {
-		final Cake cake = new Cake();
-		cake.setId(dbCake.getId());
-		cake.setName(dbCake.getName());
-		cake.setIngredients(dbCake.getIngredients());
-		cake.setRecipe(dbCake.getRecipe());
-		return cake;
-	}
-
 	@GET
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<Cake> getCakes(@QueryParam("id") List<Long> ids) {
-		final List<Cake> cakes = new ArrayList<Cake>();
+		List<Cake> cakes = null;
 		if (ids == null || ids.size() == 0) {
-			cakes.addAll(retrieveAllCakes());
+			cakes = retrieveAllCakes();
 		} else {
-			for(Long id : ids){
-				cakes.add(retrieveCake(id));
-			}
+			cakes = retrieveCakes(ids);
 		}
 		return cakes;
 	}
@@ -73,15 +60,14 @@ public class CakeService implements ICakeBuilder {
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public void newCake(@FormParam("name") String name,
-			@FormParam("ingredients") String ingredients,
-			@FormParam("recipe") String recipe,
+			@FormParam("ingredients") String ingredients, @FormParam("recipe") String recipe,
 			@Context HttpServletResponse servletResponse) throws IOException {
-		
+
 		final DBCake dbCake = new DBCake();
 		dbCake.setName(name);
 		dbCake.setIngredients(ingredients);
 		dbCake.setRecipe(recipe);
-		
+
 		putCakeInDB(dbCake);
 	}
 
@@ -98,19 +84,15 @@ public class CakeService implements ICakeBuilder {
 		if (dbCakes.isEmpty()) {
 			throw new RuntimeException("Get: No Cakes found");
 		}
-		final List<Cake> result = new ArrayList<Cake>();
-		for (IDBCake idbCake : dbCakes) {
-			result.add(buildCake(idbCake));
-		}
-		return result;
+		
+		return this.cakeConverter.buildCakes(dbCakes);
 	}
 
-	private Cake retrieveCake(Long id) {
-		final IDBCake result = dao.getCake(id);
-		if (result == null) {
-			throw new RuntimeException("Get: Cake with " + id + " not found");
+	private List<Cake> retrieveCakes(List<Long> ids) {
+		final List<IDBCake> dbCakes = dao.getCakes(ids);
+		if (dbCakes == null) {
+			throw new RuntimeException("Get: Cakes with <" + ids + "> not found");
 		}
-		return buildCake(result);
+		return this.cakeConverter.buildCakes(dbCakes);
 	}
-
 }

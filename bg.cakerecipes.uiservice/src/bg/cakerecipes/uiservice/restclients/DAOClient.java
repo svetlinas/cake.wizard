@@ -7,7 +7,7 @@ import java.util.List;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
-import bg.cakerecipes.daoservices.model.Cake;
+import bg.cakerecipes.daoservices.rest.model.Cake;
 
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.representation.Form;
