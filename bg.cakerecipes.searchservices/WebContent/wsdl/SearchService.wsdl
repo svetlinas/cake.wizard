@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SearchServiceImplService" targetNamespace="http://service.searchservices.cakerecipes.bg/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.searchservices.cakerecipes.bg/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://service.searchservices.cakerecipes.bg/" schemaLocation="SearchService_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="queryResponse">
+    <wsdl:part name="parameters" element="tns:queryResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildIndexTreeResponse">
+    <wsdl:part name="parameters" element="tns:buildIndexTreeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="query">
+    <wsdl:part name="parameters" element="tns:query">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="buildIndexTree">
+    <wsdl:part name="parameters" element="tns:buildIndexTree">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SearchService">
+    <wsdl:operation name="buildIndexTree">
+      <wsdl:input name="buildIndexTree" message="tns:buildIndexTree">
+    </wsdl:input>
+      <wsdl:output name="buildIndexTreeResponse" message="tns:buildIndexTreeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <wsdl:input name="query" message="tns:query">
+    </wsdl:input>
+      <wsdl:output name="queryResponse" message="tns:queryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SearchServiceImplServiceSoapBinding" type="tns:SearchService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="buildIndexTree">
+      <soap:operation soapAction="urn:BuildIndexTree" style="document"/>
+      <wsdl:input name="buildIndexTree">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="buildIndexTreeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="query">
+      <soap:operation soapAction="urn:Query" style="document"/>
+      <wsdl:input name="query">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SearchServiceImplService">
+    <wsdl:port name="SearchServiceImplPort" binding="tns:SearchServiceImplServiceSoapBinding">
+      <soap:address location="http://localhost:8080/bg.cakerecipes.searchservices/services/SearchServiceImplPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

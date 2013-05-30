@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://service.searchservices.cakerecipes.bg/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://service.searchservices.cakerecipes.bg/" version="1.0">
+<xs:element name="buildIndexTree" type="tns:buildIndexTree"/>
+<xs:element name="buildIndexTreeResponse" type="tns:buildIndexTreeResponse"/>
+<xs:element name="query" type="tns:query"/>
+<xs:element name="queryResponse" type="tns:queryResponse"/>
+<xs:complexType name="buildIndexTree">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="arg0" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="buildIndexTreeResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="query">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="queryResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:entry"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="entry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="rank" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

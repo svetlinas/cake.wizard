@@ -1,4 +1,4 @@
-*.class
+/**/*.class
 
 
 # Package Files #
@@ -9,5 +9,6 @@
 
 *.ear
 
-/build
+/**/build
+/**/target
 /**/.settings
