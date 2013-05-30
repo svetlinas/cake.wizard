@@ -1,4 +1,4 @@
-package bg.cakerecipes.daoservices.db.model;
+package bg.cakerecipes.daoservices.db.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+
+import bg.cakerecipes.daoservices.db.model.DBCake;
+import bg.cakerecipes.daoservices.db.model.IDBCake;
 
 
 public class DBCakeDAO implements IDBCakeDAO {

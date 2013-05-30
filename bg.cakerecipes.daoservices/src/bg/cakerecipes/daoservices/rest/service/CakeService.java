@@ -1,7 +1,6 @@
-package bg.cakerecipes.daoservices.restservice;
+package bg.cakerecipes.daoservices.rest.service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +17,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
+import bg.cakerecipes.daoservices.db.dao.DBCakeDAO;
+import bg.cakerecipes.daoservices.db.dao.DBCakeDAOException;
+import bg.cakerecipes.daoservices.db.dao.IDBCakeDAO;
 import bg.cakerecipes.daoservices.db.model.DBCake;
-import bg.cakerecipes.daoservices.db.model.DBCakeDAO;
-import bg.cakerecipes.daoservices.db.model.DBCakeDAOException;
 import bg.cakerecipes.daoservices.db.model.IDBCake;
-import bg.cakerecipes.daoservices.db.model.IDBCakeDAO;
 import bg.cakerecipes.daoservices.rest.CakeConverter;
 import bg.cakerecipes.daoservices.rest.ICakeConverter;
 import bg.cakerecipes.daoservices.rest.model.Cake;

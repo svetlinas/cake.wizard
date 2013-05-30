@@ -10,6 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name="CAKES")
 @NamedQueries({ //TODO namedQueries to be in constnats class
