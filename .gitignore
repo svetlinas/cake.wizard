@@ -10,4 +10,4 @@
 *.ear
 
 /build
-/.settings
+/**/.settings
