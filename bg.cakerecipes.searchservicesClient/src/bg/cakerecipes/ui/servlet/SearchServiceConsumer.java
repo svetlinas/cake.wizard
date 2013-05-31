@@ -36,7 +36,6 @@ public class SearchServiceConsumer {
 	 */
 	private void displayRankingChart(Map<String, Long> rankingMap, PrintStream out){
 		
-		
 		//TODO display this chart sorted by rank (highest first) - may be this http://stackoverflow.com/questions/7965132/java-sort-hashmap-by-value ... but looks like overkill
 		for (String objectId : rankingMap.keySet()) {
 			out.println("<br>object-id= " + objectId + " -->");

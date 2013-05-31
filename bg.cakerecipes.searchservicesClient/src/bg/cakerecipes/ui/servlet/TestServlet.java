@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
- * Servlet implementation class TestServlet
+ * TestServlet for proving that clients and services are integrated
  */
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,9 +22,9 @@ public class TestServlet extends HttpServlet {
 		new DaoServiceConsumer().displayAllDbStoreCakes(out);
 
 		new DrServiceConsumer().displayDataRetrievalServiceConsumed(out);
-		
+
 		new SearchServiceConsumer().displaySearchServiceConsumed(out);
-		
+
 		out.flush();
 		out.close();
 	}

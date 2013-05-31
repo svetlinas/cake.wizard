@@ -12,12 +12,12 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="CAKES")
-@NamedQueries({ //TODO namedQueries to be in constnats class
-	@NamedQuery(name="getCakesById", query="SELECT c FROM DBCake c WHERE c.id in :ids"),
-	@NamedQuery(name="getAllCakes", query="SELECT e FROM DBCake e")})
-public class DBCake implements IDBCake{
-	
+@Table(name = "CAKES")
+@NamedQueries({ 
+	@NamedQuery(name = DBQueryConstants.KEY_getAllCakes, query = DBQueryConstants.QUERY_getAllCakes),
+	@NamedQuery(name = DBQueryConstants.KEY_getCakesById, query = DBQueryConstants.QUERY_getCakesById) })
+public class DBCake implements IDBCake {
+
 	//TODO image, categories
 	
 	@Id

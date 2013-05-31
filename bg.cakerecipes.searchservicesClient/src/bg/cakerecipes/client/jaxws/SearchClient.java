@@ -41,7 +41,7 @@ public class SearchClient {
 	}
 	
 	public void buildIndexTree(List<Object> objects){
-		//TODO ?
+		//TODO to be implemented
 	}
 	
 }

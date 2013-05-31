@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
+import bg.cakerecipes.client.ServicesConstants;
 import bg.cakerecipes.daoservices.rest.model.Cake;
 
 import com.sun.jersey.api.client.ClientResponse;
@@ -17,7 +18,6 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 public class DAOClient extends AbstractClient {
 	
 	private final String REST_PATH = "cakes";
-	//TODO make URLs constants
 
 	public boolean writeCake(Cake cake) {
 		final Form form = new Form();
@@ -57,7 +57,7 @@ public class DAOClient extends AbstractClient {
 
 	@Override
 	public URI getServiceURI() {
-		return UriBuilderImpl.fromUri("http://localhost:8080/bg.cakerecipes.daoservices").build();
+		return UriBuilderImpl.fromUri(ServicesConstants.DAO_SERVICE_URL).build();
 	}
 
 	private Cake[] unparseXmlResponse() {
