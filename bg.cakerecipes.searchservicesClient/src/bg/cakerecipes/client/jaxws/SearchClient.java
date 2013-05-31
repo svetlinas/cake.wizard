@@ -1,4 +1,4 @@
-package bg.cakerecipes.ui.jaxws;
+package bg.cakerecipes.client.jaxws;
 
 import java.net.URL;
 import java.util.HashMap;

@@ -57,6 +57,8 @@
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<attachClasses>true</attachClasses>
+					<archiveClasses>true</archiveClasses>
 				</configuration>
 			</plugin>
 		</plugins>

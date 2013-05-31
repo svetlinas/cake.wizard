@@ -9,15 +9,20 @@
 
 	<dependencies>
 		<!-- CakeWizard dependencies -->
+		<!-- war depencies explained a bit here: http://maven.apache.org/plugins/maven-war-plugin/examples/war-overlay.html  -->
 		<dependency>
 			<groupId>bg.cakerecipes</groupId>
 			<artifactId>bg.cakerecipes.daoservices</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>bg.cakerecipes</groupId>
 			<artifactId>bg.cakerecipes.drservices</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- External depedencies -->
@@ -53,6 +58,8 @@
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<attachClasses>true</attachClasses>
+					<archiveClasses>true</archiveClasses>
 				</configuration>
 			</plugin>
 		</plugins>

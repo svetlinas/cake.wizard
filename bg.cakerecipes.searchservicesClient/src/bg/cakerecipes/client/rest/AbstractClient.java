@@ -1,4 +1,4 @@
-package bg.cakerecipes.ui.rest;
+package bg.cakerecipes.client.rest;
 
 import java.net.URI;
 

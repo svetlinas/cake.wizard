@@ -19,6 +19,8 @@ public class RetrievedCake {
 
 	@XmlElement(name="price")
 	private Double price;
+	
+	//TODO we need recipe as well! 
 
 	public RetrievedCake() {
 		super();
