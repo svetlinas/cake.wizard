@@ -1,5 +1,5 @@
 
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.client.jaxws.searchservices;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.client.jaxws.searchservices;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -18,19 +18,19 @@ import javax.xml.ws.ResponseWrapper;
 @XmlSeeAlso({ObjectFactory.class})
 public interface SearchService {
 
-    @RequestWrapper(localName = "buildIndexTree", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.searchservices.service.BuildIndexTree")
+    @RequestWrapper(localName = "buildIndexTree", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.client.jaxws.searchservices.BuildIndexTree")
     @WebMethod(action = "urn:BuildIndexTree")
-    @ResponseWrapper(localName = "buildIndexTreeResponse", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.searchservices.service.BuildIndexTreeResponse")
+    @ResponseWrapper(localName = "buildIndexTreeResponse", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.client.jaxws.searchservices.BuildIndexTreeResponse")
     public void buildIndexTree(
         @WebParam(name = "arg0", targetNamespace = "")
         java.util.List<java.lang.Object> arg0
     );
 
     @WebResult(name = "return", targetNamespace = "")
-    @RequestWrapper(localName = "query", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.searchservices.service.Query")
+    @RequestWrapper(localName = "query", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.client.jaxws.searchservices.Query")
     @WebMethod(action = "urn:Query")
-    @ResponseWrapper(localName = "queryResponse", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.searchservices.service.QueryResponse")
-    public java.util.List<bg.cakerecipes.searchservices.service.Entry> query(
+    @ResponseWrapper(localName = "queryResponse", targetNamespace = "http://service.searchservices.cakerecipes.bg/", className = "bg.cakerecipes.client.jaxws.searchservices.QueryResponse")
+    public java.util.List<bg.cakerecipes.client.jaxws.searchservices.Entry> query(
         @WebParam(name = "arg0", targetNamespace = "")
         java.lang.String arg0
     );

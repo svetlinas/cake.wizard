@@ -4,7 +4,7 @@
  * This class is not complete
  */
 
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.client.jaxws.searchservices;
 
 import java.util.logging.Logger;
 import javax.jws.WebMethod;
@@ -27,14 +27,14 @@ import javax.xml.ws.ResponseWrapper;
                       portName = "SearchServiceImplPort",
                       targetNamespace = "http://service.searchservices.cakerecipes.bg/",
                       wsdlLocation = "http://localhost:8080/bg.cakerecipes.searchservices/services/SearchServiceImplPort?wsdl",
-                      endpointInterface = "bg.cakerecipes.searchservices.service.SearchService")
+                      endpointInterface = "bg.cakerecipes.client.jaxws.searchservices.SearchService")
                       
 public class SearchServiceImpl implements SearchService {
 
     private static final Logger LOG = Logger.getLogger(SearchServiceImpl.class.getName());
 
     /* (non-Javadoc)
-     * @see bg.cakerecipes.searchservices.service.SearchService#buildIndexTree(java.util.List<java.lang.Object>  arg0 )*
+     * @see bg.cakerecipes.client.jaxws.searchservices.SearchService#buildIndexTree(java.util.List<java.lang.Object>  arg0 )*
      */
     public void buildIndexTree(java.util.List<java.lang.Object> arg0) { 
         LOG.info("Executing operation buildIndexTree");
@@ -47,14 +47,14 @@ public class SearchServiceImpl implements SearchService {
     }
 
     /* (non-Javadoc)
-     * @see bg.cakerecipes.searchservices.service.SearchService#query(java.lang.String  arg0 )*
+     * @see bg.cakerecipes.client.jaxws.searchservices.SearchService#query(java.lang.String  arg0 )*
      */
-    public java.util.List<bg.cakerecipes.searchservices.service.Entry> query(java.lang.String arg0) { 
+    public java.util.List<bg.cakerecipes.client.jaxws.searchservices.Entry> query(java.lang.String arg0) { 
         LOG.info("Executing operation query");
         System.out.println(arg0);
         try {
-            java.util.List<bg.cakerecipes.searchservices.service.Entry> _return = new java.util.ArrayList<bg.cakerecipes.searchservices.service.Entry>();
-            bg.cakerecipes.searchservices.service.Entry _returnVal1 = new bg.cakerecipes.searchservices.service.Entry();
+            java.util.List<bg.cakerecipes.client.jaxws.searchservices.Entry> _return = new java.util.ArrayList<bg.cakerecipes.client.jaxws.searchservices.Entry>();
+            bg.cakerecipes.client.jaxws.searchservices.Entry _returnVal1 = new bg.cakerecipes.client.jaxws.searchservices.Entry();
             _returnVal1.setId("Id-19620339");
             _returnVal1.setRank(Long.valueOf(551384500746459140l));
             _return.add(_returnVal1);

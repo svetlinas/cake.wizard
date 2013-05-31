@@ -1,5 +1,5 @@
 
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.client.jaxws.searchservices;
 
 import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;

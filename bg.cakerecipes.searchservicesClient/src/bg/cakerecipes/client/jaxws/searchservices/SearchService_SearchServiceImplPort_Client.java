@@ -1,5 +1,5 @@
 
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.client.jaxws.searchservices;
 
 /**
  * Please modify this class to meet your needs
@@ -55,7 +55,7 @@ public final class SearchService_SearchServiceImplPort_Client {
         {
         System.out.println("Invoking query...");
         java.lang.String _query_arg0 = "_query_arg0-491685184";
-        java.util.List<bg.cakerecipes.searchservices.service.Entry> _query__return = port.query(_query_arg0);
+        java.util.List<bg.cakerecipes.client.jaxws.searchservices.Entry> _query__return = port.query(_query_arg0);
         System.out.println("query.result=" + _query__return.get(0).getId());
         System.out.println("query.result=" + _query__return.get(0).getRank());
 

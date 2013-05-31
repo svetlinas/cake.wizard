@@ -7,9 +7,9 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
-import bg.cakerecipes.searchservices.service.Entry;
-import bg.cakerecipes.searchservices.service.SearchService;
-import bg.cakerecipes.searchservices.service.SearchServiceImplService;
+import bg.cakerecipes.client.jaxws.searchservices.Entry;
+import bg.cakerecipes.client.jaxws.searchservices.SearchService;
+import bg.cakerecipes.client.jaxws.searchservices.SearchServiceImplService;
 
 public class SearchClient {
 	
