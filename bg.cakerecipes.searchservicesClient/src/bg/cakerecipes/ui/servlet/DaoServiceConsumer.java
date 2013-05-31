@@ -16,7 +16,7 @@ public class DaoServiceConsumer {
 		List<Cake> cakes = dao.readCakes();
 		
 		for (Cake cake : cakes) {
-			out.printf("name=%s; id=%d ; ingredients= <%s>, recipe=%s <br>", cake.getName(), cake.getId(), cake.getIngredients(), cake.getRecipe());
+			out.printf(cake.toString());
 		}
 	}
 	

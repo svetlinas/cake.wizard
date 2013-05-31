@@ -17,6 +17,7 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 public class DAOClient extends AbstractClient {
 	
 	private final String REST_PATH = "cakes";
+	//TODO make URLs constants
 
 	public boolean writeCake(Cake cake) {
 		final Form form = new Form();
@@ -34,15 +35,16 @@ public class DAOClient extends AbstractClient {
 		return true;
 	}
 
+	//TODO here's a bug - ingredients field is empty string
 	public List<Cake> readCakes() {
-		final List<Cake> cakes = Arrays.asList(unparseJsonResponse());
+		final List<Cake> cakes = Arrays.asList(unparseXmlResponse());
 		return cakes;
 	}
 
 
 	public List<Cake> readCakes(String... ids) {
 		final MultivaluedMap<String, String> queryParameters = getIdsAsQueryParameters(ids);
-		return Arrays.asList(unparseJsonResponse(queryParameters));
+		return Arrays.asList(unparseXmlResponse(queryParameters));
 	}
 
 	private MultivaluedMap<String, String> getIdsAsQueryParameters(String[] ids) {
@@ -58,11 +60,11 @@ public class DAOClient extends AbstractClient {
 		return UriBuilderImpl.fromUri("http://localhost:8080/bg.cakerecipes.daoservices").build();
 	}
 
-	private Cake[] unparseJsonResponse() {
+	private Cake[] unparseXmlResponse() {
 		return getBuilder(REST_PATH).get(Cake[].class);
 	}
 	
-	private Cake[] unparseJsonResponse(MultivaluedMap<String, String> queryParameters) {
+	private Cake[] unparseXmlResponse(MultivaluedMap<String, String> queryParameters) {
 		return getBuilder(queryParameters, REST_PATH).get(Cake[].class);
 	}
 

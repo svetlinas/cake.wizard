@@ -1,5 +1,7 @@
 package bg.cakerecipes.daoservices.rest.model;
 
+import java.text.Format;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -55,6 +57,11 @@ public class Cake {
 
 	public void setRecipe(String recipe) {
 		this.recipe = recipe;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("name=%s; id=%d ; ingredients= <%s>, recipe=%s <br>", this.name, this.id, this.ingredients, this.recipe);
 	}
 
 }
