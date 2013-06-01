@@ -46,27 +46,6 @@ public class SearchServiceImplService extends Service {
     public SearchServiceImplService() {
         super(WSDL_LOCATION, SERVICE);
     }
-    
-    //This constructor requires JAX-WS API 2.2. You will need to endorse the 2.2
-    //API jar or re-run wsdl2java with "-frontend jaxws21" to generate JAX-WS 2.1
-    //compliant code instead.
-    public SearchServiceImplService(WebServiceFeature ... features) {
-        super(WSDL_LOCATION, SERVICE, features);
-    }
-
-    //This constructor requires JAX-WS API 2.2. You will need to endorse the 2.2
-    //API jar or re-run wsdl2java with "-frontend jaxws21" to generate JAX-WS 2.1
-    //compliant code instead.
-    public SearchServiceImplService(URL wsdlLocation, WebServiceFeature ... features) {
-        super(wsdlLocation, SERVICE, features);
-    }
-
-    //This constructor requires JAX-WS API 2.2. You will need to endorse the 2.2
-    //API jar or re-run wsdl2java with "-frontend jaxws21" to generate JAX-WS 2.1
-    //compliant code instead.
-    public SearchServiceImplService(URL wsdlLocation, QName serviceName, WebServiceFeature ... features) {
-        super(wsdlLocation, serviceName, features);
-    }
 
     /**
      *
