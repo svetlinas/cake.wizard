@@ -3,7 +3,7 @@ package bg.cakerecipes.client.jaxws.searchservices;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -32,10 +32,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "buildIndexTree", propOrder = {
     "arg0"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
 public class BuildIndexTree {
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected List<Object> arg0;
 
     /**
@@ -60,7 +58,6 @@ public class BuildIndexTree {
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public List<Object> getArg0() {
         if (arg0 == null) {
             arg0 = new ArrayList<Object>();

@@ -33,11 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "queryResponse", propOrder = {
     "_return"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
 public class QueryResponse {
 
     @XmlElement(name = "return")
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     protected List<Entry> _return;
 
     /**
@@ -62,7 +60,6 @@ public class QueryResponse {
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2013-05-31T12:05:50+03:00", comment = "JAXB RI v2.2.6")
     public List<Entry> getReturn() {
         if (_return == null) {
             _return = new ArrayList<Entry>();
