@@ -20,4 +20,6 @@ public class DaoServiceConsumer {
 		}
 	}
 	
+	//TODO make parent pom
+	
 }
