@@ -19,9 +19,9 @@ public class TestServlet extends HttpServlet {
 
 		PrintStream out = new PrintStream(response.getOutputStream());
 
-//		new DaoServiceConsumer().displayAllDbStoreCakes(out);
+		new DaoServiceConsumer().displayAllDbStoreCakes(out);
 
-//		new DrServiceConsumer().displayDataRetrievalServiceConsumed(out);
+		new DrServiceConsumer().displayDataRetrievalServiceConsumed(out);
 
 		new SearchServiceConsumer().displaySearchServiceConsumed(out);
 
