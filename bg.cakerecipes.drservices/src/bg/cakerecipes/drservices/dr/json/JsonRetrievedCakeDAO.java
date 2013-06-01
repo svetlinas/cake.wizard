@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -23,6 +24,7 @@ import bg.cakerecipes.drservices.dr.model.RetrievedCake;
  */
 public class JsonRetrievedCakeDAO {
 
+	private static final String DR_SERVICE_URL = "http://localhost:8080/bg.cakerecipes.drservices/";
 	private final String FILE_WITH_CONTENT = "resources/array.properties";
 
 	public List<RetrievedCake> getAllCakes() {
@@ -31,12 +33,15 @@ public class JsonRetrievedCakeDAO {
 		final JSONArray array = getArrayWithDataToBeRetrieved();
 		for (int i = 0; i < array.size(); i++) {
 			
-			final JSONArray cakeArray = ((JSONArray) array.get(i));
-			final String name = (String) cakeArray.get(0);
-			final List<String> contents = retrieveContents(cakeArray);
-			final Double price = Double.parseDouble((String) cakeArray.get(4));
+			final JSONArray cake = ((JSONArray) array.get(i));
+			final String name = (String) cake.get(0);
+			final List<String> contents = retrieveContents(cake);
+			final Double price = Double.parseDouble((String) cake.get(4));
 			
-			cakes.add(new RetrievedCake(name, contents, price));
+			final String recipe = Arrays.deepToString(contents.toArray());
+			final String imageUrl = (String) cake.get(1);
+			
+			cakes.add(new RetrievedCake(name, contents, price, recipe, imageUrl));
 		}
 		return cakes;
 	}
@@ -89,7 +94,7 @@ public class JsonRetrievedCakeDAO {
 
 	private InputStreamReader getResourceReader() {
 		try {
-			final URL url = new URL("http://localhost:8080/bg.cakerecipes.drservices/" + FILE_WITH_CONTENT);
+			final URL url = new URL(DR_SERVICE_URL + FILE_WITH_CONTENT);
 			return new InputStreamReader(url.openStream());
 		} catch (IOException e) {
 			throw new RuntimeException("The file cannot be loaded", e);
@@ -109,5 +114,4 @@ public class JsonRetrievedCakeDAO {
 	private BufferedReader getBufferedReader() {
 		return new BufferedReader(getResourceReader());
 	}
-
 }

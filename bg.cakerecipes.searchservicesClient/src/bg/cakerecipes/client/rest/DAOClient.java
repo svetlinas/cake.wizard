@@ -28,6 +28,7 @@ public class DAOClient extends AbstractClient {
 		final ClientResponse response = getWebService(REST_PATH)
 				.type(MediaType.APPLICATION_FORM_URLENCODED)
 				.post(ClientResponse.class, form);
+		
 		if (response.getStatus() != 204) {
 			System.out.println("Something went wrong!");
 			return false;

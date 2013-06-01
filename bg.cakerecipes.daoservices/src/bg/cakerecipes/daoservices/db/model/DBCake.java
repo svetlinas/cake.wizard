@@ -18,7 +18,7 @@ import javax.persistence.Table;
 	@NamedQuery(name = DBQueryConstants.KEY_getCakesById, query = DBQueryConstants.QUERY_getCakesById) })
 public class DBCake implements IDBCake {
 
-	//TODO image, categories
+	//TODO imageURL, categories
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

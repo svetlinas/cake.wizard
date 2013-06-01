@@ -14,16 +14,15 @@ import bg.cakerecipes.drservices.dr.model.RetrievedCake;
 public class RetrievedCakeService {
 
 	private final JsonRetrievedCakeDAO jsonDao;
-	
+
 	public RetrievedCakeService() {
-		super();
 		this.jsonDao = new JsonRetrievedCakeDAO();
 	}
-	
+
 	@GET
-	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public List<RetrievedCake> getRetrievedCakes() {
 		return jsonDao.getAllCakes();
 	}
-	
+
 }
