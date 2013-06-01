@@ -9,7 +9,7 @@
 
 	<dependencies>
 		<!-- CakeWizard dependencies -->
-		<!-- war depencies explained a bit here: http://maven.apache.org/plugins/maven-war-plugin/examples/war-overlay.html  -->
+		<!-- war depencies explained a bit here: http://maven.apache.org/plugins/maven-war-plugin/examples/war-overlay.html -->
 		<dependency>
 			<groupId>bg.cakerecipes</groupId>
 			<artifactId>bg.cakerecipes.daoservices</artifactId>
@@ -37,6 +37,13 @@
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>1.17.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
