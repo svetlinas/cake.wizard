@@ -1,5 +1,10 @@
 package bg.cakerecipes.daoservices.db.model;
 
+/**
+ * 
+ * @author Leni Kirilov
+ *
+ */
 public class DBQueryConstants {
 
 	public static final String KEY_getCakesById = "getCakesById";

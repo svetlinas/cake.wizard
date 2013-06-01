@@ -1,5 +1,8 @@
 package bg.cakerecipes.daoservices.rest.model;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,8 +24,16 @@ public class Cake {
 	@XmlElement(name="recipe")
 	private String recipe;
 	
-	public Cake() {
-		super();
+	@XmlElement(name="imageUrl")
+	private String imageUrl;
+
+	@XmlElement(name="categories")
+	private List<String> categories;
+
+	@Override
+	public String toString() {
+		return String.format("name=%s; id=%d ; ingredients= <%s>, categories= %s ; recipe=%s; imageUrl= %s", 
+				this.name, this.id, this.ingredients, Arrays.deepToString(this.categories.toArray()), this.recipe, this.imageUrl);
 	}
 
 	public long getId() {
@@ -56,10 +67,21 @@ public class Cake {
 	public void setRecipe(String recipe) {
 		this.recipe = recipe;
 	}
-	
-	@Override
-	public String toString() {
-		return String.format("name=%s; id=%d ; ingredients= <%s>, recipe=%s <br>", this.name, this.id, this.ingredients, this.recipe);
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public List<String> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<String> categories) {
+		this.categories = categories;
 	}
 
 }

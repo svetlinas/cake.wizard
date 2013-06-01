@@ -27,9 +27,7 @@ public class RetrievedCake {
 	@XmlElement(name="imageUrl")
 	private String imageUrl;
 	
-	public RetrievedCake() {
-		super();
-	}
+	public RetrievedCake(){}
 	
 	public RetrievedCake(String name, List<String> categories, Double price, String recipe, String imageUrl) {
 		super();
