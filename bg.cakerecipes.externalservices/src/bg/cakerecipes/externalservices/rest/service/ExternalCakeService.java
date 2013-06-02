@@ -1,11 +1,14 @@
 package bg.cakerecipes.externalservices.rest.service;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import bg.cakerecipes.externalservices.json.JsonExternalCakeDAO;
+import bg.cakerecipes.externalservices.model.ExternalCake;
 
 @Path("/external-cakes")
 public class ExternalCakeService {
@@ -17,8 +20,8 @@ public class ExternalCakeService {
 	}
 	
 	@GET
-	@Produces(MediaType.TEXT_HTML)
-	public String getRetrievedCakes() {
+	@Produces(MediaType.APPLICATION_XML)
+	public List<ExternalCake> getRetrievedCakes() {
 		return dao.getAllCakes();
 	}
 	
