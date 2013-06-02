@@ -34,7 +34,11 @@ public class TestServlet extends HttpServlet {
 //
 //		out.println("<br> INTEGRATING External into DAO");
 //		writeExternalModelIntoDao(extConsumer.getExternalCakes(), daoConsumer, out);
+
 		
+//		List<Cake> cakes = new ArrayList<Cake>();
+		
+//		new SearchServiceConsumer().displaySearchServiceConsumed(daoConsumer.getDBCakes(), out);
 		new SearchServiceConsumer().displaySearchServiceConsumed(daoConsumer.getDBCakes(), out);
 
 		out.flush();

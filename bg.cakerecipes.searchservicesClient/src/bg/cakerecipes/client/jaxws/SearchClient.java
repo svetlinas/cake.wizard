@@ -7,10 +7,16 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
-import bg.cakerecipes.client.jaxws.searchservices.Entry;
-import bg.cakerecipes.client.jaxws.searchservices.SearchService;
-import bg.cakerecipes.client.jaxws.searchservices.SearchServiceImplService;
+import bg.cakerecipes.client.jaxws.searchSrv.Entry;
+import bg.cakerecipes.client.jaxws.searchSrv.SearchCake;
+import bg.cakerecipes.client.jaxws.searchSrv.SearchService;
+import bg.cakerecipes.client.jaxws.searchSrv.SearchServiceImplService;
 
+/**
+ * 
+ * @author Leni Kirilov
+ *
+ */
 public class SearchClient {
 	
 	private SearchService port;
@@ -29,9 +35,9 @@ public class SearchClient {
 	 * @param keyword
 	 * @return
 	 */
-	public Map<String,Long> query(String keyword){
-		List<Entry> entries = port.query(keyword);
-		Map<String,Long> rankingMap = new HashMap<String,Long>(entries.size());
+	public Map<Long,Long> query(List<SearchCake>cakes, String keyword){
+		List<Entry> entries = port.query(cakes, keyword);
+		Map<Long,Long> rankingMap = new HashMap<Long,Long>(entries.size());
 		
 		for(Entry e : entries){
 			rankingMap.put(e.getId(), e.getRank());
@@ -39,9 +45,4 @@ public class SearchClient {
 		
 		return rankingMap;
 	}
-	
-	public void buildIndexTree(List<Object> objects){
-		//TODO to be implemented
-	}
-	
 }

@@ -33,9 +33,11 @@ public class SearchServiceImpl implements SearchService {
 		
 		for(SearchCake cake : cakes){
 			Entry e = new Entry();
-			
+
 			e.setId(cake.getId());
 			e.setRank(calculateRank(cake, keyword));
+			
+			System.out.printf("cakeName= %s; cakeRank= %d", cake.getName(), e.getRank());
 			
 			resultRankMap.add(e);
 		}
