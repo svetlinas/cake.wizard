@@ -8,8 +8,6 @@ public interface IDBCake {
 
 	public String getName();
 
-	public String getIngredients();
-
 	public String getRecipe();
 
 	public String getImageUrl();

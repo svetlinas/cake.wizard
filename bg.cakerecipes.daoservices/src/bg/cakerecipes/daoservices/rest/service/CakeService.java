@@ -70,7 +70,6 @@ public class CakeService{
 		final DBCake dbCake = new DBCake();
 		
 		dbCake.setName(name);
-		dbCake.setIngredients(ingredients);
 		dbCake.setRecipe(recipe);
 		dbCake.setCategories(categories);
 		dbCake.setImageUrl(imageUrl);

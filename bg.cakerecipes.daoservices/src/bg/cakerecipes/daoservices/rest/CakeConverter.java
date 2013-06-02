@@ -22,7 +22,6 @@ public class CakeConverter implements ICakeConverter {
 		
 		cake.setId(dbCake.getId());
 		cake.setName(dbCake.getName());
-		cake.setIngredients(dbCake.getIngredients());
 		cake.setRecipe(dbCake.getRecipe());
 		cake.setImageUrl(dbCake.getImageUrl());
 		cake.setCategories(dbCake.getCategories());

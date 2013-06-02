@@ -26,11 +26,6 @@ public class DBCake implements IDBCake {
 	@Column
 	private String name;
 
-	// TODO we differing models: 1 place categories; 2nd place - ingredients; -
-	// let's agree on a merged model of properties
-	@Column
-	private String ingredients;
-
 	@Column
 	private String recipe;
 
@@ -56,15 +51,6 @@ public class DBCake implements IDBCake {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Override
-	public String getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(String ingredients) {
-		this.ingredients = ingredients;
 	}
 
 	@Override
