@@ -7,7 +7,7 @@
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	<jaxws:endpoint xmlns:tns="http://service.searchservices.cakerecipes.bg/"
 		id="searchservice" implementor="bg.cakerecipes.searchservices.service.SearchServiceImpl"
-		wsdlLocation="wsdl/SearchService.wsdl" endpointName="tns:SearchServiceImplPort"
+		wsdlLocation="wsdl/SearchSrv.wsdl" endpointName="tns:SearchServiceImplPort"
 		serviceName="tns:SearchServiceImplService" address="/SearchServiceImplPort">
 		<jaxws:features>
 			<bean class="org.apache.cxf.feature.LoggingFeature" />

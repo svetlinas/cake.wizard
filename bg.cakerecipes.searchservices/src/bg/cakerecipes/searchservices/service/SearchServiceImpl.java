@@ -3,12 +3,18 @@ package bg.cakerecipes.searchservices.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jws.WebService;
+
+import bg.cakerecipes.searchservices.service.model.Entry;
+import bg.cakerecipes.searchservices.service.model.SearchCake;
+
 /**
  * Stub implementation of the search service
  * 
  * @author Leni Kirilov
  * 
  */
+@WebService(targetNamespace = "http://service.searchservices.cakerecipes.bg/", endpointInterface = "bg.cakerecipes.searchservices.service.SearchService", portName = "SearchServiceImplPort", serviceName = "SearchServiceImplService")
 public class SearchServiceImpl implements SearchService {
 
 	private static final Long WEIGHT_NAME = 1L;

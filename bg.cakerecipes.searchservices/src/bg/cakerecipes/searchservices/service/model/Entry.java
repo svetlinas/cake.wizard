@@ -1,4 +1,4 @@
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.searchservices.service.model;
 
 /**
  * A class used to simulate Map because of JAX-B limitations

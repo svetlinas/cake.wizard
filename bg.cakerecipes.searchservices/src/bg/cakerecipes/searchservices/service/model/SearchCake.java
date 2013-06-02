@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bg.cakerecipes.searchservices.service;
+package bg.cakerecipes.searchservices.service.model;
 
 import java.util.List;
 
