@@ -9,6 +9,7 @@ import javax.ws.rs.core.MultivaluedMap;
 
 import bg.cakerecipes.client.ServicesConstants;
 import bg.cakerecipes.daoservices.rest.model.Cake;
+import bg.cakerecipes.daoservices.rest.service.CakeServiceConstants;
 
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.representation.Form;
@@ -20,10 +21,14 @@ public class DAOClient extends AbstractClient {
 	private final String REST_PATH = "cakes";
 
 	public boolean writeCake(Cake cake) {
+		
 		final Form form = new Form();
-		form.add("name", cake.getName());
-		form.add("ingredients", cake.getIngredients());
-		form.add("recipe", cake.getRecipe());
+		
+		form.add(CakeServiceConstants.PROPERTY_NAME, cake.getName());
+		form.add(CakeServiceConstants.PROPERTY_INGREDIENTS, cake.getIngredients());
+		form.add(CakeServiceConstants.PROPERTY_RECIPE, cake.getRecipe());
+		form.add(CakeServiceConstants.PROPERTY_CATEGORIES, cake.getCategories());
+		form.add(CakeServiceConstants.PROPERTY_IMAGEURL, cake.getImageUrl());
 
 		final ClientResponse response = getWebService(REST_PATH)
 				.type(MediaType.APPLICATION_FORM_URLENCODED)
@@ -51,7 +56,7 @@ public class DAOClient extends AbstractClient {
 	private MultivaluedMap<String, String> getIdsAsQueryParameters(String[] ids) {
 		final MultivaluedMap<String, String> queryParameters = new MultivaluedMapImpl();
 		for (String id : ids) {
-			queryParameters.add("id", id);
+			queryParameters.add(CakeServiceConstants.PROPERTY_ID, id);
 		}
 		return queryParameters;
 	}

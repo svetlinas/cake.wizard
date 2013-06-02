@@ -13,7 +13,7 @@ public class DRClient extends AbstractClient {
 
 	private final String REST_PATH = "raw-cakes";
 
-	public List<RetrievedCake> readData() {
+	public List<RetrievedCake> retrieveDrCakes() {
 		return Arrays.asList(getBuilder(REST_PATH).get(RetrievedCake[].class));
 	}
 

@@ -58,14 +58,22 @@ public class CakeService{
 	@POST
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void newCake(@FormParam("name") String name,
-			@FormParam("ingredients") String ingredients, @FormParam("recipe") String recipe,
+	public void newCake(
+			@FormParam(CakeServiceConstants.PROPERTY_NAME) String name,
+			@FormParam(CakeServiceConstants.PROPERTY_INGREDIENTS) String ingredients, 
+			@FormParam(CakeServiceConstants.PROPERTY_RECIPE) String recipe,
+			@FormParam(CakeServiceConstants.PROPERTY_CATEGORIES) List<String> categories,
+			@FormParam(CakeServiceConstants.PROPERTY_IMAGEURL) String imageUrl,			
 			@Context HttpServletResponse servletResponse) throws IOException {
 
+		
 		final DBCake dbCake = new DBCake();
+		
 		dbCake.setName(name);
 		dbCake.setIngredients(ingredients);
 		dbCake.setRecipe(recipe);
+		dbCake.setCategories(categories);
+		dbCake.setImageUrl(imageUrl);
 
 		putCakeInDB(dbCake);
 	}
