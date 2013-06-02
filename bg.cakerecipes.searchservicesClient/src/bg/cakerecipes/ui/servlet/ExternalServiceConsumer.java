@@ -19,5 +19,9 @@ public class ExternalServiceConsumer {
 			out.printf("%s <br>", cake.toString());
 		}
 	}
+	
+	public List<ExternalCake> getExternalCakes(){
+		return new ExternalServicesClient().retrieveExternalCakes();
+	}
 
 }

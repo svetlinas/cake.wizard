@@ -81,7 +81,7 @@ public class CakeService{
 		try {
 			dao.addCake(dbCake);
 		} catch (DBCakeDAOException e) {
-			throw new RuntimeException("Get: No Cakes were added to DB");
+			throw new RuntimeException("Get: No Cakes were added to DB", e);
 		}
 	}
 

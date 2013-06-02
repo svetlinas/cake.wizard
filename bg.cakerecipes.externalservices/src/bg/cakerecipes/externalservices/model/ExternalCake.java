@@ -32,7 +32,7 @@ public class ExternalCake {
 		this.imageUrl = imageUrl;
 	}
 
-	public String getTitle() {
+	public String getName() {
 		return title;
 	}
 
@@ -40,7 +40,7 @@ public class ExternalCake {
 		this.title = title;
 	}
 
-	public String getPreparation() {
+	public String getRecipe() {
 		return preparation;
 	}
 

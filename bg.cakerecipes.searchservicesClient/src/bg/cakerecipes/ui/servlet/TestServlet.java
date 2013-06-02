@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bg.cakerecipes.drservices.dr.model.RetrievedCake;
+import bg.cakerecipes.externalservices.model.ExternalCake;
 
 /**
  * TestServlet for proving that clients and services are integrated
@@ -17,38 +18,56 @@ import bg.cakerecipes.drservices.dr.model.RetrievedCake;
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PrintStream out = new PrintStream(response.getOutputStream());
 		DaoServiceConsumer daoConsumer = new DaoServiceConsumer();
 		DrServiceConsumer drConsumer = new DrServiceConsumer();
-		
+		ExternalServiceConsumer extConsumer = new ExternalServiceConsumer();
+
 		drConsumer.displayDataRetrievalServiceConsumed(out);
 		daoConsumer.displayAllDbStoreCakes(out);
-		
+		extConsumer.displayedExternalServiceConsumed(out);
+
 		out.println("<br> INTEGRATING DR into DAO");
 		writeDrModelIntoDao(drConsumer.getRetrievedCakes(), daoConsumer, out);
+
+		out.println("<br> INTEGRATING External into DAO");
+		writeExternalModelIntoDao(extConsumer.getExternalCakes(), daoConsumer, out);
 		
 		new SearchServiceConsumer().displaySearchServiceConsumed(out);
 
 		out.flush();
 		out.close();
 	}
-	
-	private void writeDrModelIntoDao(List<RetrievedCake> retrievedCakes, DaoServiceConsumer daoConsumer, PrintStream out){
-		for(RetrievedCake cake : retrievedCakes){
-			
+
+	private void writeDrModelIntoDao(List<RetrievedCake> retrievedCakes, DaoServiceConsumer daoConsumer, PrintStream out) {
+		for (RetrievedCake cake : retrievedCakes) {
 			out.printf("<br>Trying to write retrieved cake (name= %s )... ", cake.getName());
 			boolean result = daoConsumer.writeDrCake2Dao(cake);
-			
-			if(result){
-				out.println("SUCCES"); 
-			}else{
-				out.println("FAILED");
-			}
+			printResultString(out, result);
 		}
-		
+
 		daoConsumer.displayAllDbStoreCakes(out);
 	}
+
+	private void writeExternalModelIntoDao(List<ExternalCake> externalCakes, DaoServiceConsumer daoConsumer,
+			PrintStream out) {
+		for (ExternalCake cake : externalCakes) {
+			out.printf("<br>Trying to write retrieved cake (name= %s )... ", cake.getName());
+			boolean result = daoConsumer.writeExternalCake2Dao(cake);
+			printResultString(out, result);
+		}
+
+		daoConsumer.displayAllDbStoreCakes(out);
+	}
+
+	private void printResultString(PrintStream out, boolean result) {
+		if (result) {
+			out.println("SUCCES");
+		} else {
+			out.println("FAILED");
+		}
+	}
+
 }

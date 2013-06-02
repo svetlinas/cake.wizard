@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import bg.cakerecipes.daoservices.db.model.DBCake;
 import bg.cakerecipes.daoservices.db.model.IDBCake;
-
 
 public class DBCakeDAO implements IDBCakeDAO {
 
@@ -22,7 +22,6 @@ public class DBCakeDAO implements IDBCakeDAO {
 		factory = createEntityManagerFactory();
 	}
 
-	
 	@Override
 	public List<IDBCake> getCakes(List<Long> ids) {
 		EntityManager manager = factory.createEntityManager();
@@ -31,7 +30,7 @@ public class DBCakeDAO implements IDBCakeDAO {
 			query.setParameter("ids", ids);
 
 			List<IDBCake> resultCakes = new ArrayList<IDBCake>(ids.size());
-			for(Object cake : query.getResultList()){
+			for (Object cake : query.getResultList()) {
 				resultCakes.add((DBCake) cake);
 			}
 			return resultCakes;
@@ -56,14 +55,17 @@ public class DBCakeDAO implements IDBCakeDAO {
 
 	@Override
 	public void addCake(IDBCake cakeToBeAdded) throws DBCakeDAOException {
-		EntityManager manager = factory.createEntityManager();
+		final EntityManager manager = factory.createEntityManager();
+		final EntityTransaction transaction = manager.getTransaction();
 		try {
-			manager.getTransaction().begin();
+			transaction.begin();
 			manager.persist(cakeToBeAdded);
-			manager.getTransaction().commit();
+			transaction.commit();
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
-			throw new DBCakeDAOException("", e);
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			throw new DBCakeDAOException("The entry could not make it to the DB", e);
 		} finally {
 			manager.close();
 		}
