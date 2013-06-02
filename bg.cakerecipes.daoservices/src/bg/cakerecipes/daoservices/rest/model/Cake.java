@@ -32,8 +32,12 @@ public class Cake {
 
 	@Override
 	public String toString() {
-		return String.format("name=%s; id=%d ; ingredients= <%s>, categories= %s ; recipe=%s; imageUrl= %s", 
-				this.name, this.id, this.ingredients, Arrays.deepToString(this.categories.toArray()), this.recipe, this.imageUrl);
+		if(this.categories!=null) {
+			return String.format("name=%s; id=%d ; ingredients= %s, categories= %s ; recipe=%s; imageUrl= %s", 
+					this.name, this.id, this.ingredients, Arrays.deepToString(this.categories.toArray()), this.recipe, this.imageUrl);
+		}
+		return String.format("name=%s; id=%d ; ingredients= %s, categories= %s ; recipe=%s; imageUrl= %s", 
+				this.name, this.id, this.ingredients, null, this.recipe, this.imageUrl);
 	}
 
 	public long getId() {

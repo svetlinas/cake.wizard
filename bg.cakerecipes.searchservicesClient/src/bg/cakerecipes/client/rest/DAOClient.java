@@ -41,7 +41,6 @@ public class DAOClient extends AbstractClient {
 		return true;
 	}
 
-	//TODO here's a bug - ingredients field is empty string
 	public List<Cake> readCakes() {
 		final List<Cake> cakes = Arrays.asList(unparseXmlResponse());
 		return cakes;
