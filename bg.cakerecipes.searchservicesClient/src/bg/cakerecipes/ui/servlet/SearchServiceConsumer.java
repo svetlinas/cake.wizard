@@ -1,7 +1,6 @@
 package bg.cakerecipes.ui.servlet;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -10,28 +9,26 @@ import java.util.List;
 import java.util.Map;
 
 import bg.cakerecipes.client.jaxws.SearchClient;
+import bg.cakerecipes.daoservices.rest.model.Cake;
 
 public class SearchServiceConsumer {
 	private SearchClient search = new SearchClient();
 
-	public void displaySearchServiceConsumed(PrintStream out) {
+	public void displaySearchServiceConsumed(List<Cake> dbCakes, PrintStream out) {
 		
 		out.println("----------displaySearchServiceConsumed-----------<br><br>");
 		
-		{
-			out.println("Invoking buildIndexTree...<br>");
-			List<Object> _buildIndexTree_arg0 = new ArrayList<Object>();
-			Object _buildIndexTree_arg0Val1 = null;
-			_buildIndexTree_arg0.add(_buildIndexTree_arg0Val1);
-			this.search.buildIndexTree(_buildIndexTree_arg0);
-		}
+//		List<SearchCake> searchCakes = SearchCakeConverter.convert2SearchCakes(dbCakes);
+		
+//		this.search.query(searchCakes, "shoko"); //TODO pass this from html
+		
 		{
 			out.println("Invoking query...<br>");
 			
 			String queryKeyword = "shoko";
-			Map<String, Long> rankingMap = this.search.query(queryKeyword);
+//			Map<String, Long> rankingMap = this.search.query(searchCakes, queryKeyword);
 			
-			displayRankingChart(rankingMap, out);
+//			displayRankingChart(rankingMap, out);
 		}
 	}
 	

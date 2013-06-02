@@ -19,7 +19,7 @@ public class DaoServiceConsumer {
 	public void displayAllDbStoreCakes(PrintStream out) {
 		out.println("<br><br>----------displayDaoServiceConsumed-----------<br><br>");
 
-		List<Cake> cakes = new DAOClient().readCakes();
+		List<Cake> cakes = getDBCakes();
 
 		for (Cake cake : cakes) {
 			out.printf("%s <br>", cake.toString());
@@ -47,5 +47,10 @@ public class DaoServiceConsumer {
 
 		return new DAOClient().writeCake(cake);
 	}
+	
+	public List<Cake> getDBCakes(){
+		return new DAOClient().readCakes();
+	}
+	
 	// TODO make parent pom
 }

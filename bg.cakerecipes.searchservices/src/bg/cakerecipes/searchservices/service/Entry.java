@@ -1,43 +1,29 @@
 package bg.cakerecipes.searchservices.service;
 
 /**
- * A class used to simulate Map because of JAX-B limiations
+ * A class used to simulate Map because of JAX-B limitations
  * 
  * @author Leni Kirilov
- *
+ * 
  */
 public class Entry {
 
-	private String id;
+	private Long id;
 	private Long rank;
 
-	/**
-	 * @return the rank
-	 */
 	public Long getRank() {
 		return rank;
 	}
 
-	/**
-	 * @param rank
-	 *            the rank to set
-	 */
 	public void setRank(Long rank) {
 		this.rank = rank;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }

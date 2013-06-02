@@ -29,13 +29,13 @@ public class TestServlet extends HttpServlet {
 //		daoConsumer.displayAllDbStoreCakes(out);
 //		extConsumer.displayExternalServiceConsumed(out);
 
-		out.println("<br> INTEGRATING DR into DAO");
-		writeDrModelIntoDao(drConsumer.getRetrievedCakes(), daoConsumer, out);
-
-		out.println("<br> INTEGRATING External into DAO");
-		writeExternalModelIntoDao(extConsumer.getExternalCakes(), daoConsumer, out);
+//		out.println("<br> INTEGRATING DR into DAO");
+//		writeDrModelIntoDao(drConsumer.getRetrievedCakes(), daoConsumer, out);
+//
+//		out.println("<br> INTEGRATING External into DAO");
+//		writeExternalModelIntoDao(extConsumer.getExternalCakes(), daoConsumer, out);
 		
-		new SearchServiceConsumer().displaySearchServiceConsumed(out);
+		new SearchServiceConsumer().displaySearchServiceConsumed(daoConsumer.getDBCakes(), out);
 
 		out.flush();
 		out.close();

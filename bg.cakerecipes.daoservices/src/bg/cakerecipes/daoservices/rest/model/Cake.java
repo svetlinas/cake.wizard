@@ -18,6 +18,7 @@ public class Cake {
 	@XmlElement(name="name")
 	private String name;
 	
+	//TODO remove this ! later on
 	@XmlElement(name="ingredients")
 	private String ingredients;
 	
