@@ -31,6 +31,11 @@ public class ExternalCake {
 		this.preparation = preparation;
 		this.imageUrl = imageUrl;
 	}
+	
+	@Override
+	public String toString() {
+		return "name=" + title + "; recipe=" + preparation + "; imageUrl=" + imageUrl + "\n";
+	}
 
 	public String getName() {
 		return title;
@@ -62,10 +67,5 @@ public class ExternalCake {
 	
 	public String getRid() {
 		return this.rid;
-	}
-	
-	@Override
-	public String toString() {
-		return "name=" + title + "; recipe=" + preparation + "; imageUrl=" + imageUrl + "\n";
 	}
 }

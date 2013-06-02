@@ -25,9 +25,9 @@ public class TestServlet extends HttpServlet {
 		DrServiceConsumer drConsumer = new DrServiceConsumer();
 		ExternalServiceConsumer extConsumer = new ExternalServiceConsumer();
 
-		drConsumer.displayDataRetrievalServiceConsumed(out);
-		daoConsumer.displayAllDbStoreCakes(out);
-		extConsumer.displayedExternalServiceConsumed(out);
+//		drConsumer.displayDataRetrievalServiceConsumed(out);
+//		daoConsumer.displayAllDbStoreCakes(out);
+//		extConsumer.displayExternalServiceConsumed(out);
 
 		out.println("<br> INTEGRATING DR into DAO");
 		writeDrModelIntoDao(drConsumer.getRetrievedCakes(), daoConsumer, out);
@@ -64,7 +64,7 @@ public class TestServlet extends HttpServlet {
 
 	private void printResultString(PrintStream out, boolean result) {
 		if (result) {
-			out.println("SUCCES");
+			out.println("SUCCESS");
 		} else {
 			out.println("FAILED");
 		}

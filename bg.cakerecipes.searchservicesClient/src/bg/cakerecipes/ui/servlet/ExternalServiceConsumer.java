@@ -10,7 +10,7 @@ public class ExternalServiceConsumer {
 	
 	private ExternalServicesClient client = new ExternalServicesClient();
 	
-	public void displayedExternalServiceConsumed(PrintStream out) {
+	public void displayExternalServiceConsumed(PrintStream out) {
 		out.println("<br><br>----------displayExternalServiceConsumed-----------<br><br><br>");
 
 		List<ExternalCake> cakes = client.retrieveExternalCakes();
