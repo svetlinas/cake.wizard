@@ -27,10 +27,12 @@ $('document')
 										+ '" class="cakeRealContent" style="display: block" />');
 								var cakeName = $('<h4 class="cakeName">'
 										+ cakeObj.name + '</h4>');
+								var cakeCategories = $('<h4>Категории:</h4> ' + cakeObj.categories);
 								var cakeContentTitle = $('<h4>Рецепта:</h4>');
 								var cakeContent = $('<span>' + cakeObj.recipe.substr(0,200)
 										+ '... </span>');
 								cake.append(cakeName);
+								cake.append(cakeCategories);
 								cake.append(cakeContentTitle);
 								cake.append(cakeContent);
 								return cake;

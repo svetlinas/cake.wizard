@@ -56,9 +56,9 @@
                 <div id="menu">
 
                     <a href="" class="menuItem left">HOME</a>
-                    <a href="ind.html" class="menuItem">CATALOG</a>
+                    <a href="" class="menuItem">CATALOG</a>
                     <a href="" class="menuItem selected" style="font-style:italic;">WIZARD</a>
-                    <a href="cakeWizard.html" class="menuItem">H-MADE</a>
+                    <a href="" class="menuItem">H-MADE</a>
                     <a href="" class="menuItem">ABOUT</a>
                     <a href="" class="menuItem">HELP</a>
 
