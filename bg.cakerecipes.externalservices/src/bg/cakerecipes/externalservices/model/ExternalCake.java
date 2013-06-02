@@ -15,18 +15,21 @@ public class ExternalCake {
 	@XmlElement(name="Preparation")
 	private String preparation;
 	
-	@XmlElement(name="Category")
-	private String category;
+	@XmlElement(name="ImageUrl")
+	private String imageUrl;
+
+	@XmlElement(name="Rid")
+	private String rid;
 	
 	public ExternalCake() {
 		super();
 	}
 
-	public ExternalCake(String title, String preparation, String category) {
+	public ExternalCake(String title, String preparation, String imageUrl) {
 		super();
 		this.title = title;
 		this.preparation = preparation;
-		this.category = category;
+		this.imageUrl = imageUrl;
 	}
 
 	public String getTitle() {
@@ -45,17 +48,24 @@ public class ExternalCake {
 		this.preparation = preparation;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
-	@Override
-	public String toString() {
-		return "ExternalCake [title=" + title + ", preparation=" + preparation + ", category=" + category + "]";
+	public void setRid(String rid) {
+		this.rid = rid;
 	}
 	
+	public String getRid() {
+		return this.rid;
+	}
+	
+	@Override
+	public String toString() {
+		return "name=" + title + "; recipe=" + preparation + "; imageUrl=" + imageUrl + "\n";
+	}
 }
