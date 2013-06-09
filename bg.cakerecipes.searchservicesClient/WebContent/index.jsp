@@ -6,35 +6,18 @@
         <link href="style/style.css" rel="stylesheet" type="text/css" />
         <script src="jquery/jquery-1.4.2.min.js"></script>
         <script src="jslib/contentManage.js"></script>
-        <script src="jslib/global.js"></script>
         <script>
             $('document').ready(function(){
 
                 $('#wizardSearch').click(function(){
-                    
-                    var _contents = new Array();
-                        $('#cakeContent input:checked').each(function(){
-                            _contents = _contents.concat($(this).val());
-                        });
-
-                    var _occasion = $('#cakeOccasion input:checked').val();
+                    var _words = $('#wizardWords').val();
 
                     request = {
-                        content:_contents,
-                        occasion:_occasion
+                        words:_words
                     };
                     
                     $.fn.load(request,'<%=request.getContextPath()%>/TestServlet');
-                    
-                    $('#loadingDiv')
-                    .hide()  // hide it initially
-                    .ajaxStart(function() {
-                        $(this).show();
-                    })
-                    .ajaxStop(function() {
-                        $(this).hide();
-                    })
-                ;
+                    return false;
                 });
             });
         </script>
@@ -68,7 +51,7 @@
             <!-- CONTENT -->
 
             <fieldset id="cakeWizard">
-                <legend>Search for all of your favourite cakes</legend>
+                <!-- legend>Search for all of your favourite cakes</legend>
                 <div id="cakeContent" class="field" style="float:right;">
                     <label></label>
                     <div class="checkLabel">
@@ -109,8 +92,13 @@
 
                         <input type="radio" name="case" value="" checked/>all
                     </div>
-                </div>
-                <input id="wizardSearch" type="submit" value="SEARCH" class="submit" />
+                </div> -->
+                
+                
+                <form id="searchForm">
+                	<input id="wizardWords" type="text" size="40" value="" />
+                	<input id="wizardSearch" type="submit" value="SEARCH" class="submit" />
+                </form>
             </fieldset>
             
 			<div id="loadingDiv">

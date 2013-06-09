@@ -19,19 +19,10 @@ public class DaoServiceConsumer {
 	public void displayAllDbStoreCakes(PrintStream out) {
 		out.println("<br><br>----------displayDaoServiceConsumed-----------<br><br>");
 
-<<<<<<< HEAD
 		List<Cake> cakes = getDBCakes();
-=======
-		List<Cake> cakes = readCakesFromDB();
->>>>>>> branch 'master' of git@github.com:svetlinas/cake.wizard.git
-
 		for (Cake cake : cakes) {
 			out.printf("%s <br>", cake.toString());
 		}
-	}
-	
-	public List<Cake> readCakesFromDB() {
-		return new DAOClient().readCakes();
 	}
 
 	public boolean writeDrCake2Dao(RetrievedCake retrievedCake) {

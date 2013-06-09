@@ -88,7 +88,7 @@ public class CakeService{
 	private List<Cake> retrieveAllCakes() {
 		final List<IDBCake> dbCakes = dao.getAllCakes();
 		if (dbCakes.isEmpty()) {
-			throw new RuntimeException("Get: No Cakes found");
+			System.out.println("Get: No Cakes found");
 		}
 		
 		return this.cakeConverter.buildCakes(dbCakes);

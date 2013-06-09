@@ -77,6 +77,10 @@
 			border:0 none;
 			cursor:pointer;
 		}
+		
+		fieldset#cakeWizard form#searchForm {
+			text-align: center;
+		}
 
 		div#header div#menu{
 			width:862px;
@@ -129,207 +133,6 @@
 			overflow:hidden;
 		}
 
-		div#basketContent{
-			position:absolute;
-			left:400px;
-			top:120px;
-			background:#FFFFF0;
-			padding:20px;
-			padding-top:50px;
-			border:2px outset #FFFACD;
-			width:400px;
-			text-align:center;
-			font-family: verdana, arial, sans-serif;
-			font-size:1em;
-			color:#104E8B;
-		}
-
-                div#basketContent input.button{
-                    margin:10px;
-                    padding:0px 10px 0px 10px;
-                }
-
-		div#basketContent.go{
-			background:#FFFFF0 url(loader.gif) center 10px no-repeat;
-			padding-top:80px;
-		}
-
-		div#basketContent div.basketNavigation{
-			width:70px;
-			float:right;
-			clear:both;
-			color:maroon;
-			text-decoration:underline;
-			margin-top:-38px;
-			margin-right:-8px;
-		}
-
-		div#basketContent div.basketNavigation:hover{
-			text-decoration:none;
-			cursor:pointer;
-		}
-
-		div#basketContent div#totalPrice{
-			margin:20px 0px 20px 0px;
-			clear:both;
-		}
-
-		div#basketContent div.innerBasketItem{
-			width:350px;
-			height:24px;
-			line-height:24px;
-			margin:0 auto;
-			margin-bottom:20px;
-		}
-
-		div#basketContent div.innerBasketItem *{
-			float:left;
-			margin-right:5px;
-		}
-
-		div#basketContent div.innerBasketItem div.photo img{
-			width:24px;
-			height:24px;
-		}
-
-		div#basketContent div.innerBasketItem select{
-			width:80px;
-		}
-
-		div#basketContent div.innerBasketItem select option{
-			margin:0px;
-			padding:0px;
-
-		}
-
-		div#basketContent div.innerBasketItem input{
-			width:40px;
-			text-align:center;
-			margin-top:1px;
-		}
-
-		div#basketContent div.innerBasketItem div.price{
-			width:100px;
-			line-height:22px;
-			text-align:right;
-		}
-
-		div#basketContent div.innerBasketItem div.erase{
-			line-height:22px;
-			text-align:left;
-			font-size:12px;
-			text-decoration:underline;
-			cursor:pointer;
-		}
-
-		div#basketContent div.innerBasketItem div.erase:hover{
-			text-decoration:none;
-		}
-
-		div#basketContent div.basketForm{
-			width:350px;
-			height:35px;
-			margin:0 auto;
-			text-align:left;
-		}
-
-		div#basketContent div.basketForm label{
-			float:left;
-			width:150px;
-		}
-
-		div#basketContent div.basketForm input{
-			float:left;
-			width:190px;
-		}
-
-
-
-
-		div#content form.buy{
-			float:left;
-			display:none;
-		}
-
-		div#content form.buy.now{
-			width:400px;
-			height:160px;
-			display:block;
-		}
-
-		div#content form.buy div.quantity{
-			float:left;
-			width:160px;
-			height:80px;
-			margin:0px 15px 15px 10px;
-			text-align:right;
-		}
-
-		div#content form.buy div.quantity label{
-			float:left;
-			margin-left:5px;
-			margin-right:10px;
-		}
-
-		div#content form.buy div.quantity span{
-			margin-right:15px;
-			font-size:10px;
-			color:maroon;
-		}
-
-		div#content form.buy div.buyButton{
-			clear:left;
-			float:left;
-			width:380px;
-		}
-
-		div#content form.buy div.buyButton input{
-			width:150px;
-			margin:0px 20px 0px 20px;
-			cursor:pointer;
-		}
-
-		div#content form.buy div.field{
-			float:left;
-			width:170px;
-			height:80px;
-			margin:-5px 15px 15px 25px;
-		}
-
-		div#content form.buy div.field label{
-			float:left;
-			margin:10px 0px 10px 0px;
-			display:block;
-		}
-
-		div#content form.buy div.field select{
-			float:left;
-			margin:10px 0px 10px 10px;
-			display:block;
-			font-weight:bold;
-		}
-
-		div#content form.buy div.checkLabel{
-			line-height:30px;
-			padding-left:5px;
-			height:30px;
-		}
-
-		div#content form.buy div.checkLabel input{
-			float:left;
-			width:14px;
-			height:14px;
-			margin-top:10px;
-			margin-right:10px;
-		}
-
-		div#content form.buy div.checkLabel input.count{
-			float:left;
-			width:25px;
-			margin-top:7px;
-			margin-right:10px;
-			text-align:center;
-		}
 
 		div#content div#container{
 			width:1600px;
@@ -394,36 +197,6 @@
 			cursor:pointer;
 		}
 
-		div#content div.cakeItem div.price div.priceRange{
-			text-align:right;
-		}
-
-		div#content div.cakeItem div.price div.priceSize{
-			float:left;
-			text-align:left;
-			width:62px;
-			text-decoration:underline;
-                        font-size:0.85em;
-		}
-
-		div#content div.cakeItem div.price div.priceSize:hover{
-			text-decoration:none;
-			color:#BD0F00;
-		}
-
-		div#content div.cakeItem div.price div.priceCost{
-			text-align:right;
-			width:28px;
-			padding-right:2px;
-			float:left;
-                        font-size:0.94em;
-		}
-
-		div#content div.cakeItem div.price h4{
-			text-align:center;
-			margin-bottom:10px;
-		}
-
 		fieldset#cakeWizard{
 			margin:0 auto;
 			width:600px;
@@ -480,7 +253,7 @@
 			font-weight:bold;
 		}
 
-		fieldset#cakeWizard input.submit{
+		fieldset#cakeWizard input.submit {
 			margin:15px auto;
 			width:100px;
 			height:30px;

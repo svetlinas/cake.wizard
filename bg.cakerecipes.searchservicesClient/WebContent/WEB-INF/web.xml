@@ -17,4 +17,14 @@
 		<servlet-name>TestServlet</servlet-name>
 		<url-pattern>/TestServlet</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description></description>
+		<display-name>ExtractDataServlet</display-name>
+		<servlet-name>ExtractDataServlet</servlet-name>
+		<servlet-class>bg.cakerecipes.ui.servlet.ExtractDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ExtractDataServlet</servlet-name>
+		<url-pattern>/ExtractDataServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
