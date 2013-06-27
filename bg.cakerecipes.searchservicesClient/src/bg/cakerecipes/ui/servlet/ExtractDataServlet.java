@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import bg.cakerecipes.drservices.dr.model.RetrievedCake;
 import bg.cakerecipes.externalservices.model.ExternalCake;
+import bg.cakerecipes.ui.servlet.consumers.DaoServiceConsumer;
+import bg.cakerecipes.ui.servlet.consumers.DrServiceConsumer;
+import bg.cakerecipes.ui.servlet.consumers.ExternalServiceConsumer;
 
 public class ExtractDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

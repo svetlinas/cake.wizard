@@ -14,17 +14,17 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import bg.cakerecipes.daoservices.rest.model.Cake;
+import bg.cakerecipes.ui.servlet.consumers.DaoServiceConsumer;
+import bg.cakerecipes.ui.servlet.consumers.SearchServiceConsumer;
 
 /**
  * TestServlet for proving that clients and services are integrated
  */
+//TODO split into 2 servlets - one for show and one for testing displaying ugly data  as strings
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final String searchWords = request.getParameter("request");
-		final String searchParam = getSearchRequest(searchWords);
-		
 		processRequest(request, response);
 	}
 
@@ -35,12 +35,23 @@ public class TestServlet extends HttpServlet {
 
 		DaoServiceConsumer daoConsumer = new DaoServiceConsumer();
 		List<Cake> cakes = daoConsumer.getDBCakes();
-
+		
+		String query = extractQuery(request);
+		if(! "".equals(query)){
+			cakes = new SearchServiceConsumer().sortCakes(query, cakes);
+		}
+		
 		try {
 			out.print(getJsonArray(cakes));
 		} finally {
 			out.close();
 		}
+	}
+	
+	private String extractQuery(HttpServletRequest request){
+		final String searchWords = request.getParameter("request");
+		final String query = getSearchRequest(searchWords);
+		return query.trim();
 	}
 
 	private String getSearchRequest(String searchRequest) {

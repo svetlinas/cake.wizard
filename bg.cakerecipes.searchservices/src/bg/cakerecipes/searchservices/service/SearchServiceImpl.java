@@ -45,6 +45,8 @@ public class SearchServiceImpl implements SearchService {
 		return resultRankMap;
 	}
 
+	
+	//TODO write JUnit tests for this Linear ranking algorithm
 	private Long calculateRank(SearchCake cake, String keyword) {
 		Long rank = 0L;
 

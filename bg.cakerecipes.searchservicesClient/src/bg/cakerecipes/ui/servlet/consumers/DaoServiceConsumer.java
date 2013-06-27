@@ -1,4 +1,4 @@
-package bg.cakerecipes.ui.servlet;
+package bg.cakerecipes.ui.servlet.consumers;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
