@@ -24,7 +24,4 @@ public class RetrievedCakeService {
 	public List<RetrievedCake> getRetrievedCakes() {
 		return jsonDao.getAllCakes();
 	}
-	
-	//TODO check if the styleItems are exposed properly as resources (or if not in correct project - to be moved to proper one)
-
 }

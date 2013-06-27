@@ -90,7 +90,6 @@ public class SearchServiceImpl implements SearchService {
 //	 */
 //	@Override
 //	public List<Long> filter(List<SearchCake> cakes, String filteringCategory) {
-//		// TODO Auto-generated method stub
 //		return null;
 //	}
 
