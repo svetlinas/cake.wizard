@@ -51,4 +51,4 @@ TestServlet
 - nice shiny HTML (IN-PROGRESS)
 - consumes the other 2 WARS and 1 WSDL
 - deployed as WAR
-- can be reach here: http://localhost:8080/bg.cakerecipes.client/TestServlet
+- can be reach here: http://localhost:8080/bg.cakerecipes.client/
