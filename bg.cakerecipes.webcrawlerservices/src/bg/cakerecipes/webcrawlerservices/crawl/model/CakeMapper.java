@@ -14,31 +14,40 @@ import edu.uci.ics.crawler4j.parser.HtmlParseData;
  */
 public class CakeMapper {
 
-	public static List<Cake> htmlCakes = new ArrayList<Cake>();
+	public static List<WebCrawlerCake> htmlCakes = new ArrayList<WebCrawlerCake>();
 
 	public static void parseCakes(Page page) {
-		String cakeXml = findCakeRecipe(page);
+		String cakeXml = null;
+		try {
+			cakeXml = findCakeRecipe(page);
+		} catch(StringIndexOutOfBoundsException e) {
+			System.out.println(e.getMessage());
+			return;
+		}
 
-		//		System.out.println("cake title= " + );
-//		System.out.println("cake imgUrl= " + getImageUrl(cakeXml));
-//		System.out.println("cake recipe= " + getCakeRecipe(cakeXml));
-//		System.out.println();
-		
-		Cake cake = new Cake();
+		// System.out.println("cake title= " + );
+		// System.out.println("cake imgUrl= " + getImageUrl(cakeXml));
+		// System.out.println("cake recipe= " + getCakeRecipe(cakeXml));
+		// System.out.println();
+
+		WebCrawlerCake cake = new WebCrawlerCake();
 		cake.setName(getCakeTitle(cakeXml));
 		cake.setImageUrl(getImageUrl(cakeXml));
 		cake.setRecipe(getCakeRecipe(cakeXml));
-		
+
+		System.out.println(cake.toString());
+
 		htmlCakes.add(cake);
 	}
 
-	private static String findCakeRecipe(Page page) {
+	private static String findCakeRecipe(Page page) throws StringIndexOutOfBoundsException {
 		String html = ((HtmlParseData) page.getParseData()).getHtml();
 		html = html.substring(16);
 		int index = html.indexOf("<div id=\"recipe\"");
 		int endIndex = html.indexOf("<div class=\"box_f\">");
 
 		return html.substring(index, endIndex);
+
 	}
 
 	private static String getCakeTitle(String html) {

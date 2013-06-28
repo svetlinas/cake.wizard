@@ -1,13 +1,25 @@
 package bg.cakerecipes.webcrawlerservices.crawl.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author Leni Kirilov
  * 
  */
-public class Cake {
+@XmlRootElement(name="WebCrawlerCake")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class WebCrawlerCake {
 
+	@XmlElement(name="name")
 	private String name;
+	
+	@XmlElement(name="imageUrl")
 	private String imageUrl;
+	
+	@XmlElement(name="recipe")
 	private String recipe;
 
 	public String getName() {
@@ -36,6 +48,6 @@ public class Cake {
 	
 	@Override
 	public String toString() {
-	   return String.format("Name= %s,  ImageUrl= %s, Recipe= [%s]", name, imageUrl, recipe);
+	   return String.format("Name = %s,  ImageUrl = %s, Recipe = [%s]", name, imageUrl, recipe);
 	}
 }
