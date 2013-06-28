@@ -3,6 +3,7 @@
  */
 package bg.cakerecipes.searchservices.service.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,8 +18,15 @@ public class SearchCake {
 	private String name;
 	private String recipe;
 	private List<String> categories;
-	
-	public SearchCake() {}
+
+	public SearchCake() {
+	}
+
+	@Override
+	public String toString() {
+		return String.format("id: %s, name: %s, categories: %s, recipe: <%s> ", id, name, recipe,
+		      Arrays.deepToString(categories.toArray()));
+	}
 
 	public Long getId() {
 		return id;

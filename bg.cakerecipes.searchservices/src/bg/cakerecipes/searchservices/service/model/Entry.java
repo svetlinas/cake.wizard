@@ -26,4 +26,9 @@ public class Entry {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Id= %d, Rank= %d", id, rank);
+	}
 }

@@ -38,12 +38,3 @@ public interface SearchService {
 	public List<Entry> query(@WebParam(name = "arg0") List<SearchCake> cakes, @WebParam(name = "arg1") String keyword);
 	
 }
-//	/**
-//	 *
-//	 * 
-//	 * @param cakes
-//	 * @param filteringCategory
-//	 * @return
-//	 */
-//	public List<Long> filter(List<SearchCake> cakes, String filteringCategory);
-//}

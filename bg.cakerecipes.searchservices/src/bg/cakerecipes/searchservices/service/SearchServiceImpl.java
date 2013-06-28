@@ -2,9 +2,11 @@ package bg.cakerecipes.searchservices.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.jws.WebService;
 
+import bg.cakerecipes.searchservices.engine.prototype.BasicLinearSearchEngine;
 import bg.cakerecipes.searchservices.service.model.Entry;
 import bg.cakerecipes.searchservices.service.model.SearchCake;
 
@@ -17,10 +19,6 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
 @WebService(targetNamespace = "http://service.searchservices.cakerecipes.bg/", endpointInterface = "bg.cakerecipes.searchservices.service.SearchService", portName = "SearchServiceImplPort", serviceName = "SearchServiceImplService")
 public class SearchServiceImpl implements SearchService {
 
-	private static final Long WEIGHT_NAME = 1L;
-	private static final Long WEIGHT_RECIPE = 2L;
-	private static final Long WEIGHT_CATEGORY = 5L;
-	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -31,66 +29,30 @@ public class SearchServiceImpl implements SearchService {
 	public List<Entry> query(List<SearchCake> cakes, String keyword) {
 		List<Entry> resultRankMap = new ArrayList<Entry>(cakes.size());
 		
-		for(SearchCake cake : cakes){
+		Map<Long, Long> rankedCakesMap = makeBasicRanking(cakes, keyword); 
+		
+		for(Long id : rankedCakesMap.keySet()){
 			Entry e = new Entry();
 
-			e.setId(cake.getId());
-			e.setRank(calculateRank(cake, keyword));
+			e.setId(id);
+			e.setRank(rankedCakesMap.get(id));
 			
-			System.out.printf("cakeName= %s; cakeRank= %d", cake.getName(), e.getRank());
+			System.out.println(e.toString());
 			
 			resultRankMap.add(e);
 		}
 
 		return resultRankMap;
 	}
-
 	
-	//TODO write JUnit tests for this Linear ranking algorithm
-	private Long calculateRank(SearchCake cake, String keyword) {
-		Long rank = 0L;
-
-		if (cake.getName().contains(keyword)) {
-			rank += WEIGHT_NAME;
-		}
-
-		rank += findRepeatingString(cake.getRecipe(), keyword) * WEIGHT_RECIPE;
-
-		for (String category : cake.getCategories()) {
-			if (category.contains(keyword)) {
-				rank += WEIGHT_CATEGORY;
-			}
-		}
-
-		return rank;
+	private Map<Long, Long> makeBasicRanking(List<SearchCake> cakes, String query){
+		//TODO use interface when decide on common stuff
+		BasicLinearSearchEngine basicLinearSearchEngine = new BasicLinearSearchEngine();
+		return basicLinearSearchEngine.rankCakes(cakes, query);
 	}
-
-	private Long findRepeatingString(String source, String findStr) {
-		int lastIndex = 0;
-		Long count = 0L;
-
-		while (lastIndex != -1) {
-
-			lastIndex = source.indexOf(findStr, lastIndex);
-
-			if (lastIndex != -1) {
-				count++;
-				lastIndex += findStr.length();
-			}
-		}
-		return count;
+	
+	private Map<Long, Long> makeComplexRanking(List<SearchCake> cakes, String query){
+		//TODO use lucene
+		return null;
 	}
-
-//	/*
-//	 * (non-Javadoc)
-//	 * 
-//	 * @see
-//	 * bg.cakerecipes.searchservices.service.SearchService#filter(java.util.
-//	 * List, java.lang.String)
-//	 */
-//	@Override
-//	public List<Long> filter(List<SearchCake> cakes, String filteringCategory) {
-//		return null;
-//	}
-
 }
