@@ -89,7 +89,7 @@ public class SearchServiceConsumer {
 	 * @param map
 	 * @return sorted by value LinkedHashMap
 	 */
-	// TODO move to Query service may be?
+	// TODO move to Query service may be? MOved. To be removed!
 	private static Map<Long, Long> sortByValue(Map<Long, Long> map) {
 		List<Map.Entry<Long, Long>> list = new LinkedList<Map.Entry<Long, Long>>(map.entrySet());
 

@@ -52,4 +52,5 @@ public class DaoServiceConsumer {
 	}
 	
 	// TODO make parent pom
+	// TODO try to make war files smaller. Search service is 35 MB!!!
 }

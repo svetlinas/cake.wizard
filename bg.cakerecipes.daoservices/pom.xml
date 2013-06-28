@@ -6,11 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<!-- <repository> -->
-	<!-- <id>EclipseLink</id> -->
-	<!-- <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url> -->
-	<!-- </repository> -->
-
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
