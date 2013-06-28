@@ -25,5 +25,4 @@ public class WebCrawlerCakeService {
 		webCrawler.runCrawler();
 		return webCrawler.getAllCakes();
 	}
-
 }

@@ -7,6 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 	<dependencies>
 
 		<!-- 3.4+ versions use 1.7 compilation, so we stick with 3.4 -->

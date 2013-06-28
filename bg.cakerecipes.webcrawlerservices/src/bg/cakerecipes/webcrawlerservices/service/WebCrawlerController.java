@@ -28,11 +28,6 @@ public class WebCrawlerController {
 		} catch (Exception e) {
 			throw new RuntimeException("Could not initialize CrawlerController", e);
 		}
-
-		// for(Cake cake : CakeMapper.htmlCakes){
-		// System.out.println(cake.toString());
-		// System.out.println("\n\n");
-		// }
 	}
 
 	private CrawlController getCrawlController(final CrawlConfig config) throws Exception {
