@@ -1,6 +1,12 @@
 package bg.cakerecipes.searchservices.engine.lucene;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,6 +17,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
@@ -33,12 +40,16 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
  * The foundations is apache Lucene.<br>
  * <br>
  * It allows queries like this:<br>
- *  "cake" - exact match<br>
- *  "cake*" - prefix cake<br>
- *  "cake -chocolate" - any non-chocolate cake<br>
- *  "cake -choco*"- any non-choco starting cake<br>
- *  
- *  For more about the query language check out {@link MultiFieldQueryParser}
+ * "cake" - exact match<br>
+ * "cake*" - prefix cake<br>
+ * "cake -chocolate" - any non-chocolate cake<br>
+ * "cake -choco*"- any non-choco starting cake<br>
+ * 
+ * For more about the query language check out {@link MultiFieldQueryParser} <br>
+ * <br>
+ * <a href=
+ * "http://www.avajava.com/tutorials/lessons/how-do-i-use-lucene-to-index-and-search-text-files.html"
+ * > Cool tutorial for Lucene </a>
  * 
  * @author Leni Kirilov
  * 
@@ -46,7 +57,22 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
 public class ComplexSearchEngine implements CakeSearchEngine {
 
 	private final Version LUCENE_VERSION = Version.LUCENE_43;
-	private final Analyzer analyzer = new StandardAnalyzer(LUCENE_VERSION);
+	private Analyzer analyzer = null;
+	
+	private final String FILE_WITH_CONTENT = "bulgarianST.txt";
+
+	public ComplexSearchEngine() {
+//		try {
+//			InputStream stream = Thread.currentThread().getContextClassLoader().getResource(FILE_WITH_CONTENT).openStream();
+//	      this.analyzer = new StandardAnalyzer(LUCENE_VERSION, new InputStreamReader(stream));
+			this.analyzer = new StandardAnalyzer(LUCENE_VERSION);
+					
+//      } catch (FileNotFoundException e) {
+//	      throw new ComplexSearchException("StopWords file not found.", e);
+//      } catch (IOException e) {
+//	      throw new ComplexSearchException("Error reading StopWords file.", e);
+//      }
+	}
 
 	@Override
 	public Map<Long, Long> rankCakes(List<SearchCake> cakes, String query) {
@@ -98,6 +124,32 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 	}
 
 	/**
+	 * Conversion of Cake to SearchDocuments and its properties to fields.
+	 * 
+	 * @param cakes
+	 * @return
+	 */
+	private List<Document> convertCakesToDocument(List<SearchCake> cakes) {
+		List<Document> docs = new ArrayList<Document>(cakes.size());
+		for (SearchCake cake : cakes) {
+
+			Document doc = new Document();
+
+			Field nameField = new Field(CakeFieldTypes.NAME.getFieldName(), cake.getName(), TextField.TYPE_STORED);
+			nameField.setBoost(2F);
+			doc.add(nameField);
+			doc.add(new TextField(CakeFieldTypes.RECIPE.getFieldName(), cake.getRecipe(), Store.YES));
+			doc.add(new Field(CakeFieldTypes.CATEGORIES.getFieldName(), Arrays
+			      .deepToString(cake.getCategories().toArray()), TextField.TYPE_STORED));
+			doc.add(new Field(CakeFieldTypes.ID.getFieldName(), "" + cake.getId(), TextField.TYPE_STORED));
+
+			docs.add(doc);
+		}
+
+		return docs;
+	}
+
+	/**
 	 * Perform ranking of a directory based on query.
 	 * 
 	 * @param directory
@@ -112,7 +164,8 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 			ireader = DirectoryReader.open(directory);
 			IndexSearcher isearcher = new IndexSearcher(ireader);
 
-			// using multiFieldParser because we have multiple fields for our cake model
+			// using multiFieldParser because we have multiple fields for our cake
+			// model
 			QueryParser parser = new MultiFieldQueryParser(LUCENE_VERSION, new String[] {
 			      CakeFieldTypes.NAME.getFieldName(), CakeFieldTypes.CATEGORIES.getFieldName(),
 			      CakeFieldTypes.RECIPE.getFieldName() }, analyzer);
@@ -120,50 +173,27 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 			Query query = parser.parse(queryPhrase);
 
 			ScoreDoc[] hits = isearcher.search(query, null, 1000).scoreDocs;
-			
+
 			Map<Long, Long> idScoreMap = new HashMap<Long, Long>(hits.length);
-			for(ScoreDoc hit: hits){
+			for (ScoreDoc hit : hits) {
 				Document doc = isearcher.doc(hit.doc);
-				
+
 				String id = doc.getField(CakeFieldTypes.ID.getFieldName()).stringValue();
 				idScoreMap.put(Long.valueOf(id), new Long((long) (1000 * hit.score)));
 			}
 
 			ireader.close();
 			directory.close();
-			
+
 			return idScoreMap;
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new ComplexSearchException("Query failed due to memory issue", e);
 		} catch (ParseException e) {
-	      e.printStackTrace();
-	      throw new ComplexSearchException("Parsing issue. Check indexing/query for invalid symbols. QueyWord = <" + queryPhrase + ">", e);
-      }
-	}
-
-	/**
-	 * Conversion to SearchDocuments and their property a field.
-	 * 
-	 * @param cakes
-	 * @return
-	 */
-	private List<Document> convertCakesToDocument(List<SearchCake> cakes) {
-		List<Document> docs = new ArrayList<Document>(cakes.size());
-		for (SearchCake cake : cakes) {
-
-			Document doc = new Document();
-
-			doc.add(new Field(CakeFieldTypes.NAME.getFieldName(), cake.getName(), TextField.TYPE_STORED));
-			doc.add(new Field(CakeFieldTypes.RECIPE.getFieldName(), cake.getRecipe(), TextField.TYPE_STORED));
-			doc.add(new Field(CakeFieldTypes.CATEGORIES.getFieldName(), Arrays
-			      .deepToString(cake.getCategories().toArray()), TextField.TYPE_STORED));
-			doc.add(new Field(CakeFieldTypes.ID.getFieldName(), "" + cake.getId(), TextField.TYPE_STORED));
-
-			docs.add(doc);
+			e.printStackTrace();
+			throw new ComplexSearchException("Parsing issue. Check indexing/query for invalid symbols. QueyWord = <"
+			      + queryPhrase + ">", e);
 		}
-
-		return docs;
 	}
 }
