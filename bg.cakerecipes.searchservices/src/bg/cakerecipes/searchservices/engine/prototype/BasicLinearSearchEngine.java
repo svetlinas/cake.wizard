@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import bg.cakerecipes.searchservices.engine.CakesSearchEngine;
+import bg.cakerecipes.searchservices.engine.CakeSearchEngine;
 import bg.cakerecipes.searchservices.service.model.SearchCake;
 
 /**
@@ -14,7 +14,7 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
  * @author Leni Kirilov
  * 
  */
-public class BasicLinearSearchEngine implements CakesSearchEngine {
+public class BasicLinearSearchEngine implements CakeSearchEngine {
 
 	private static final Long WEIGHT_NAME = 1L;
 	private static final Long WEIGHT_RECIPE = 2L;
@@ -28,6 +28,7 @@ public class BasicLinearSearchEngine implements CakesSearchEngine {
 	 *           - query used for ranking
 	 * @return map (id, rank)
 	 */
+	@Override
 	public Map<Long, Long> rankCakes(List<SearchCake> cakes, String query) {
 		Map<Long, Long> resultRankMap = new HashMap<Long, Long>(cakes.size());
 

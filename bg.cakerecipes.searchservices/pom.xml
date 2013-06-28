@@ -8,7 +8,34 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-	
+
+		<!-- Lucene dependencies -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-common</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+
+		<!-- CXF JAX-WS dependencies -->
+
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-bundle</artifactId>
@@ -20,7 +47,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -32,7 +59,6 @@
 			<version>3.2.3.RELEASE</version>
 		</dependency>
 
-		<!-- from internet -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -75,7 +101,6 @@
 			<version>3.2.3.RELEASE</version>
 		</dependency>
 
-		<!-- next dependencies group -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-core</artifactId>

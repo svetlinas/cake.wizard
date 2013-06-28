@@ -6,12 +6,13 @@ import java.util.Map;
 
 import javax.jws.WebService;
 
-import bg.cakerecipes.searchservices.engine.prototype.BasicLinearSearchEngine;
+import bg.cakerecipes.searchservices.engine.CakeSearchEngine;
+import bg.cakerecipes.searchservices.engine.lucene.ComplexSearchEngine;
 import bg.cakerecipes.searchservices.service.model.Entry;
 import bg.cakerecipes.searchservices.service.model.SearchCake;
 
 /**
- * Stub implementation of the search service
+ * Implementation of the search service by calling external search engines.
  * 
  * @author Leni Kirilov
  * 
@@ -19,17 +20,14 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
 @WebService(targetNamespace = "http://service.searchservices.cakerecipes.bg/", endpointInterface = "bg.cakerecipes.searchservices.service.SearchService", portName = "SearchServiceImplPort", serviceName = "SearchServiceImplService")
 public class SearchServiceImpl implements SearchService {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * bg.cakerecipes.searchservices.service.SearchService#query(java.util.List,
-	 * java.lang.String)
-	 */
+//	private CakeSearchEngine searchEngine = new BasicLinearSearchEngine();
+	private CakeSearchEngine searchEngine = new ComplexSearchEngine();
+	
+	@Override
 	public List<Entry> query(List<SearchCake> cakes, String keyword) {
 		List<Entry> resultRankMap = new ArrayList<Entry>(cakes.size());
 		
-		Map<Long, Long> rankedCakesMap = makeBasicRanking(cakes, keyword); 
+		Map<Long, Long> rankedCakesMap = searchEngine.rankCakes(cakes, keyword);
 		
 		for(Long id : rankedCakesMap.keySet()){
 			Entry e = new Entry();
@@ -43,16 +41,5 @@ public class SearchServiceImpl implements SearchService {
 		}
 
 		return resultRankMap;
-	}
-	
-	private Map<Long, Long> makeBasicRanking(List<SearchCake> cakes, String query){
-		//TODO use interface when decide on common stuff
-		BasicLinearSearchEngine basicLinearSearchEngine = new BasicLinearSearchEngine();
-		return basicLinearSearchEngine.rankCakes(cakes, query);
-	}
-	
-	private Map<Long, Long> makeComplexRanking(List<SearchCake> cakes, String query){
-		//TODO use lucene
-		return null;
 	}
 }

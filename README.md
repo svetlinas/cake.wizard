@@ -52,3 +52,10 @@ TestServlet
 - consumes the other 2 WARS and 1 WSDL
 - deployed as WAR
 - can be reach here: http://localhost:8080/bg.cakerecipes.client/
+
+
+Search capabilities:
+ *  "cake" - exact match<br>
+ *  "cake*" - prefix cake<br>
+ *  "cake -chocolate" - any non-chocolate cake<br>
+ *  "cake -choco*"- any non-choco starting cake<br>
