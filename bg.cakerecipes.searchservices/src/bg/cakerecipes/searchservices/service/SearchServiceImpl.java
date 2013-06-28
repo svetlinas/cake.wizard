@@ -23,6 +23,8 @@ public class SearchServiceImpl implements SearchService {
 //	private CakeSearchEngine searchEngine = new BasicLinearSearchEngine();
 	private CakeSearchEngine searchEngine = new ComplexSearchEngine();
 	
+	
+	//TODO simplify web service interface. Remove the Rank and only return a sorted list of cakes' IDs.
 	@Override
 	public List<Entry> query(List<SearchCake> cakes, String keyword) {
 		List<Entry> resultRankMap = new ArrayList<Entry>(cakes.size());

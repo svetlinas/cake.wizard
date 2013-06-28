@@ -25,15 +25,19 @@ API
 
 DataRetrieval Service (DrService)
 - reads data from a json file
-- fetches data from WWW sites (IN-PROGRESS)
 - exposed as REST service
 - deployed as WAR
 - can be reached here: http://localhost:8080/bg.cakerecipes.drservices/rest/raw-cakes
 
+DataRetrieval Service (DrService)
+- consumes external site's REST API
+- exposed as REST service
+- deployed as WAR
+- can be reached here: ?
 
 SearchService 
 - provides searching capabilities
-- generates indexTrees and queries them (IN-PROGRESS)
+- generates indexTrees and queries them using Apache Lucene's rich capabilities engine
 - exposed as JAX-WS service using CXF runtime
 - deployed as WAR
 - WSDL reachable here: http://localhost:8080/bg.cakerecipes.searchservices/services/SearchServiceImplPort?wsdl
@@ -43,19 +47,19 @@ API
 - void buildIndexTrees()
 
 
-----------------------
-UI
-
-TestServlet
-- displays information from each service
-- nice shiny HTML (IN-PROGRESS)
-- consumes the other 2 WARS and 1 WSDL
-- deployed as WAR
-- can be reach here: http://localhost:8080/bg.cakerecipes.client/
-
-
 Search capabilities:
  *  "cake" - exact match<br>
  *  "cake*" - prefix cake<br>
  *  "cake -chocolate" - any non-chocolate cake<br>
  *  "cake -choco*"- any non-choco starting cake<br>
+
+----------------------
+UI
+
+Home screen of the CakeWizard site
+- displays information for cakes
+- search capabilities integrated
+- nice shiny HTML (IN-PROGRESS)
+- integration point for all 4 services and 1 WSDL
+- deployed as WAR
+- can be reach here: http://localhost:8080/bg.cakerecipes.client/

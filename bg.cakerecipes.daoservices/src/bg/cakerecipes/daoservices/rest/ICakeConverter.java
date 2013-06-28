@@ -14,7 +14,5 @@ import bg.cakerecipes.daoservices.rest.model.Cake;
  */
 public interface ICakeConverter {
 
-	public Cake buildCake(IDBCake cake);
-
 	public List<Cake> buildCakes(List<IDBCake> dbCakes);
 }
