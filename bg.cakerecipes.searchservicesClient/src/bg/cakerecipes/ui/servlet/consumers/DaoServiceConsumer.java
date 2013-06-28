@@ -8,6 +8,7 @@ import bg.cakerecipes.client.rest.DAOClient;
 import bg.cakerecipes.daoservices.rest.model.Cake;
 import bg.cakerecipes.drservices.dr.model.RetrievedCake;
 import bg.cakerecipes.externalservices.model.ExternalCake;
+import bg.cakerecipes.webcrawlerservices.crawl.model.WebCrawlerCake;
 
 /**
  * 
@@ -50,6 +51,16 @@ public class DaoServiceConsumer {
 	public List<Cake> getDBCakes(){
 		return new DAOClient().readCakes();
 	}
+
+   public boolean writeCrawlerCake2Dao(WebCrawlerCake crawlerCake) {
+		final Cake cake = new Cake();
+
+		cake.setName(crawlerCake.getName());
+		cake.setRecipe(crawlerCake.getRecipe());
+		cake.setImageUrl(crawlerCake.getImageUrl());
+
+		return new DAOClient().writeCake(cake);
+   }
 	
 	// TODO make parent pom
 }
