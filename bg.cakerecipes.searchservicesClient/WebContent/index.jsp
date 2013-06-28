@@ -4,10 +4,45 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="style/style.css" rel="stylesheet" type="text/css" />
-        <script src="jquery/jquery-1.4.2.min.js"></script>
+        <link href="style/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script src="jquery/jquery-1.9.1.min.js"></script>
+        <script src="jquery/jquery-ui.min.js"></script>
         <script src="jslib/contentManage.js"></script>
+        <script src="jslib/spellchecker.js"></script>
         <script>
             $('document').ready(function(){
+                var source = $.get("jslib/spellchecker-source.txt");
+                setTimeout(function(){
+                  speller.train(source.responseText)
+                }, 200);
+
+                $("#wizardWords").autocomplete({
+                    source: function( request, response ) {
+                        var list = [];
+                        var results = [];
+                        var query = $("#wizardWords").val();
+                        var idx = query.lastIndexOf(" ");
+                        if (idx > -1) {
+                            var word = query.substr(idx + 1);
+                            if (word.length > 4) {
+                                results = speller.correct(word);
+                            }
+                        } else {
+                            results = speller.correct(query); 
+                        }
+
+                        for (var i in results) { 
+                            list.push(query.substr(0, idx + 1) + results[i])
+                        }
+
+                        if (list.length == 0) {
+                            list.push(query);
+                        }
+                        response(list.reverse());
+                    },
+                    minLength: 4,
+                    select: function( event, ui ) { return false; }
+                });
 
                 $('#wizardSearch').click(function(){
                     var _words = $('#wizardWords').val();

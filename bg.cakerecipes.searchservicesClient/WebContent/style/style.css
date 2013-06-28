@@ -257,12 +257,8 @@
 			margin:15px auto;
 			width:100px;
 			height:30px;
-			display:block;
+			display:inline-block;
 		}
-
-
-
-
 
 		div#footer{
 			width:800px;
@@ -362,3 +358,16 @@
 		background:#104E8B;
 		color:#FFF;
 	}
+
+  #ui-id-1 {
+    font-size: 11px;
+  }
+
+  #ui-id-1 li {
+    margin: 1px 0;
+  }
+
+  #ui-id-1 li:nth-child(odd) {
+    background-color: #F4F5F5;
+    border-radius: 4px;
+  }
