@@ -1,10 +1,6 @@
 package bg.cakerecipes.searchservices.engine.lucene;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,22 +52,19 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
  */
 public class ComplexSearchEngine implements CakeSearchEngine {
 
+	private static final String SEARCH_SERVICE_URL = "http://localhost:8080/bg.cakerecipes.searchservices/";
 	private final Version LUCENE_VERSION = Version.LUCENE_43;
 	private Analyzer analyzer = null;
-	
-	private final String FILE_WITH_CONTENT = "bulgarianST.txt";
 
-	public ComplexSearchEngine() {
-//		try {
-//			InputStream stream = Thread.currentThread().getContextClassLoader().getResource(FILE_WITH_CONTENT).openStream();
-//	      this.analyzer = new StandardAnalyzer(LUCENE_VERSION, new InputStreamReader(stream));
+	private final String FILE_WITH_CONTENT = "resources/bulgarianST.properties";
+
+	@Override
+	public void initializeSearchAnalizer() {
+		try {
+			this.analyzer = new StandardAnalyzer(LUCENE_VERSION, getResourceReader());
+		} catch (IOException e) {
 			this.analyzer = new StandardAnalyzer(LUCENE_VERSION);
-					
-//      } catch (FileNotFoundException e) {
-//	      throw new ComplexSearchException("StopWords file not found.", e);
-//      } catch (IOException e) {
-//	      throw new ComplexSearchException("Error reading StopWords file.", e);
-//      }
+		}
 	}
 
 	@Override
@@ -81,6 +74,15 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 		Map<Long, Long> idScoreMap = rankDocs(indexDir, query);
 
 		return idScoreMap;
+	}
+
+	private InputStreamReader getResourceReader() {
+		try {
+			final URL url = new URL(SEARCH_SERVICE_URL + FILE_WITH_CONTENT);
+			return new InputStreamReader(url.openStream());
+		} catch (IOException e) {
+			throw new RuntimeException("The file cannot be loaded", e);
+		}
 	}
 
 	/**
@@ -139,8 +141,8 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 			nameField.setBoost(2F);
 			doc.add(nameField);
 			doc.add(new TextField(CakeFieldTypes.RECIPE.getFieldName(), cake.getRecipe(), Store.YES));
-			doc.add(new Field(CakeFieldTypes.CATEGORIES.getFieldName(), Arrays
-			      .deepToString(cake.getCategories().toArray()), TextField.TYPE_STORED));
+			doc.add(new Field(CakeFieldTypes.CATEGORIES.getFieldName(), Arrays.deepToString(cake.getCategories()
+					.toArray()), TextField.TYPE_STORED));
 			doc.add(new Field(CakeFieldTypes.ID.getFieldName(), "" + cake.getId(), TextField.TYPE_STORED));
 
 			docs.add(doc);
@@ -153,9 +155,9 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 	 * Perform ranking of a directory based on query.
 	 * 
 	 * @param directory
-	 *           - index is located here
+	 *            - index is located here
 	 * @param queryPhrase
-	 *           - the query
+	 *            - the query
 	 * @return map of doc/cake ID and score
 	 */
 	private Map<Long, Long> rankDocs(Directory directory, String queryPhrase) {
@@ -164,11 +166,12 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 			ireader = DirectoryReader.open(directory);
 			IndexSearcher isearcher = new IndexSearcher(ireader);
 
-			// using multiFieldParser because we have multiple fields for our cake
+			// using multiFieldParser because we have multiple fields for our
+			// cake
 			// model
 			QueryParser parser = new MultiFieldQueryParser(LUCENE_VERSION, new String[] {
-			      CakeFieldTypes.NAME.getFieldName(), CakeFieldTypes.CATEGORIES.getFieldName(),
-			      CakeFieldTypes.RECIPE.getFieldName() }, analyzer);
+					CakeFieldTypes.NAME.getFieldName(), CakeFieldTypes.CATEGORIES.getFieldName(),
+					CakeFieldTypes.RECIPE.getFieldName() }, analyzer);
 
 			Query query = parser.parse(queryPhrase);
 
@@ -193,7 +196,7 @@ public class ComplexSearchEngine implements CakeSearchEngine {
 		} catch (ParseException e) {
 			e.printStackTrace();
 			throw new ComplexSearchException("Parsing issue. Check indexing/query for invalid symbols. QueyWord = <"
-			      + queryPhrase + ">", e);
+					+ queryPhrase + ">", e);
 		}
 	}
 }

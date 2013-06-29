@@ -14,4 +14,6 @@ import bg.cakerecipes.searchservices.service.model.SearchCake;
 public interface CakeSearchEngine {
 
 	public Map<Long, Long> rankCakes(List<SearchCake> cakes, String queryPhrase);
+	
+	public void initializeSearchAnalizer();
 }

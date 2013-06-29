@@ -73,4 +73,9 @@ public class BasicLinearSearchEngine implements CakeSearchEngine {
 		}
 		return count;
 	}
+
+	@Override
+	public void initializeSearchAnalizer() {
+		throw new UnsupportedOperationException();
+	}
 }

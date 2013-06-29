@@ -18,7 +18,7 @@ public class BasicCrawler extends WebCrawler {
 	private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|mid|mp2|mp3|mp4|wav|avi|mov|mpeg|ram|m4v|pdf"
 			+ "|rm|smil|wmv|swf|wma|zip|rar|gz))$");
 
-	private Set<String> visitedPages = new HashSet<String>();
+	private static Set<String> visitedPages = new HashSet<String>();
 
 	@Override
 	public boolean shouldVisit(WebURL url) {

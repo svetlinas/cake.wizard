@@ -29,6 +29,7 @@ public class SearchServiceImpl implements SearchService {
 	public List<Entry> query(List<SearchCake> cakes, String keyword) {
 		List<Entry> resultRankMap = new ArrayList<Entry>(cakes.size());
 		
+		searchEngine.initializeSearchAnalizer();
 		Map<Long, Long> rankedCakesMap = searchEngine.rankCakes(cakes, keyword);
 		
 		for(Long id : rankedCakesMap.keySet()){
